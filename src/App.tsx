@@ -1,55 +1,75 @@
-import { useQueryCall, useUpdateCall } from '@ic-reactor/react';
-import './App.css';
-import motokoLogo from './assets/motoko_moving.png';
-import motokoShadowLogo from './assets/motoko_shadow.png';
-import reactLogo from './assets/react.svg';
-import viteLogo from './assets/vite.svg';
+import { useEffect, useState } from "react";
+// import { backend } from "./declarations/backend";
+import backend from "./ic";
 
 function App() {
-  const { data: count, refetch } = useQueryCall({
-    functionName: 'get',
-  });
+  const [auctions, setAuctions] = useState([]);
+  const [item, setItem] = useState("");
+  const [bidAmount, setBidAmount] = useState("");
+  const [auctionId, setAuctionId] = useState("");
+  const [bidder, setBidder] = useState("");
 
-  const { call: increment, loading } = useUpdateCall({
-    functionName: 'inc',
-    onSuccess: refetch,
-  });
+  useEffect(() => {
+    fetchAuctions();
+  }, []);
+
+  async function fetchAuctions() {
+    const data = await backend.listAuctions();
+    setAuctions(data);
+  }
+
+  async function createAuction() {
+    await backend.createAuction(item);
+    setItem("");
+    fetchAuctions();
+  }
+
+  async function placeBid() {
+    const result = await backend.placeBid(Number(auctionId), Number(bidAmount), bidder);
+    alert(result);
+    fetchAuctions();
+  }
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-        <a
-          href="https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/"
-          target="_blank"
-        >
-          <span className="logo-stack">
-            <img
-              src={motokoShadowLogo}
-              className="logo motoko-shadow"
-              alt="Motoko logo"
-            />
-            <img src={motokoLogo} className="logo motoko" alt="Motoko logo" />
-          </span>
-        </a>
-      </div>
-      <h1>Vite + React + Motoko</h1>
-      <div className="card">
-        <button onClick={increment} disabled={loading}>
-          count is {count?.toString() ?? 'loading...'}
-        </button>
-        <p>
-          Edit <code>backend/Backend.mo</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite, React, and Motoko logos to learn more
-      </p>
+    <div style={{ padding: "2rem", fontFamily: "sans-serif" }}>
+      <h1>Bidding System</h1>
+
+      <h2>Create Products to Bid</h2>
+      <input
+        placeholder="Item name"
+        value={item}
+        onChange={(e) => setItem(e.target.value)}
+      />
+      <button onClick={createAuction}>Submit</button>
+
+      <h2>Auctions</h2>
+      <ul>
+        {auctions.map((a, i) => (
+          <li key={i}>
+            {a.id.toString()} - <b>{a.item}</b> | Highest Bid: {a.highestBid.toString()} by {a.highestBidder}
+          </li>
+        ))}
+      </ul>
+
+      <h2>Place Bid</h2>
+      <input
+        placeholder="Auction ID"
+        value={auctionId}
+        onChange={(e) => setAuctionId(e.target.value)}
+        type="number"
+      />
+      <input
+        placeholder="Bid Amount"
+        value={bidAmount}
+        onChange={(e) => setBidAmount(e.target.value)}
+        type="number"
+      />
+      <input
+        placeholder="Your Name"
+        value={bidder}
+        onChange={(e) => setBidder(e.target.value)}
+      />
+      <button onClick={placeBid}>Place Bid</button>
     </div>
   );
 }
