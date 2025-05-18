@@ -6,7 +6,7 @@ import App from './App';
 // import { canisterId, idlFactory } from './declarations/backend';
 import './index.scss';
 import LandingPage from './LandingPage';
-import AboutUsPage from './AboutUs';
+// import AboutUsPage from './AboutUs';
 import { BrowserRouter } from 'react-router-dom';
 
 import { canisterId, idlFactory } from './declarations/backend';
