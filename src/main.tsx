@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 
 // import { canisterId, idlFactory } from './declarations/backend';
-import './index.scss';
-import LandingPage from './LandingPage';
+// import './index.scss';
+// import LandingPage from './LandingPage';
 // import AboutUsPage from './AboutUs';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -15,10 +15,7 @@ import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <LandingPage />
-      <AboutUsPage/>
-    </BrowserRouter>
+      <App />
   </React.StrictMode>
 );
 

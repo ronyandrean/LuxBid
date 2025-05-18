@@ -1,8 +1,9 @@
 import React,{useState, useRef, useEffect} from "react";
 import {Link} from 'react-router-dom'
-import './LandingPage.css'
-import background from './assets/background-landing-baru.jpg'
+import '../style/LandingPage.css'
+import background from '../assets/background-landing-baru.jpg'
 import ClickSpark from "./ClickSpark";
+import logo from '../assets/LXRe.png'
 
 function LandingPage() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -34,7 +35,9 @@ function LandingPage() {
 
       {/* Content on top of image */}
       <div className="Header">
-        <div className="text-logo">LXRe</div>
+        <div className="logo-image">
+          <img src={logo} alt="" />
+        </div>
         <nav className="nav">
           <div className="nav-item dropdown" ref={dropdownRef}>
             <button onClick={toggleDropdown} className="dropdown-button" aria-expanded={isDropdownOpen}>

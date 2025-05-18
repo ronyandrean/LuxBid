@@ -1,9 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand');
+@import url('https://fonts.googleapis.com/css2?family=Gloock');
+
 html, body, #root {
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
 }
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -37,12 +41,24 @@ html, body, #root {
   font-style: italic;
 }
 
+.logo-image {
+  display: flex;
+  align-items: center;
+  margin-left: 50px;
+}
+
+.logo-image img{
+  /* background-color: red; */
+  height: 20px;
+}
+
 .nav {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   gap: 3rem;
   padding: 1rem 7rem 1rem 1rem;
+  font-family: "Quicksand", sans-serif;
 }
 
 .nav-item {
@@ -50,6 +66,7 @@ html, body, #root {
   font-size: 1rem;
   opacity: 0.9;
   transition: opacity 0.2s ease;
+  text-decoration: none;
 }
 
 .nav-item-dropdown a {
@@ -118,10 +135,12 @@ html, body, #root {
   display: block;
   padding: 0.75rem 1rem;
   transition: background-color 0.2s ease;
+  text-decoration: none
 }
 
 .dropdown-item:hover {
   background-color: rgba(255, 255, 255, 0.05);
+  text-decoration: none;
 }
 
 .Landing-Content {
@@ -178,6 +197,10 @@ html, body, #root {
   font-family: "Gloock", serif;
 }
 
+.blockchain-tagline span {
+  font-family: "Gloock", serif;
+}
+
 .blur-word {
   display: inline-block;
   opacity: 0;
@@ -188,39 +211,49 @@ html, body, #root {
   display: inline-block;
   opacity: 0;
   animation: blurFadeSlide 3s ease-out forwards;
+  font-weight: normal;
 }
 
 .tagline-buttons {
   display: flex;
   gap: 1rem;
-  padding-top: 1rem;
+  /* padding-top: 0.2rem; */
   animation: blurFadeSlide 3s ease-out forwards;
 }
 
 .button-1 {
   background-color: #2a9d8f;
   color: white;
-  padding: 0.6rem 1.2rem;
-  border: none;
+  padding: 0.6rem 1.4rem;
+  border: 1px solid white;
   cursor: pointer;
   font-weight: 500;
+  font-family: "Quicksand", sans-serif;
+  /* font-size: 16px; */
 }
 
 .button-1:hover {
-  background-color: #238b7e;
+  background-color: #1C2628;
+  color: #008564;
+  transition: 0.5s ease;
+  border: 1px solid #008564;
 }
 
 .button-2 {
   background-color: white;
   color: black;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 0.6rem 1.2rem;
+  border: 1px solid white;
+  padding: 0.6rem 1.4rem;
   cursor: pointer;
   font-weight: 500;
+  font-family: "Quicksand", sans-serif;
 }
 
 .button-2:hover {
-  border-color: rgba(255, 255, 255, 0.5);
+  background-color: black;
+  color: white;
+  transition: 0.5s ease;
+  border: 1px solid white;
 }
 
 .content-image {
