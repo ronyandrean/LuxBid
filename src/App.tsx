@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 // import { backend } from "./declarations/backend";
 import backend from "./ic";
 
+
 function App() {
   const [auctions, setAuctions] = useState([]);
   const [item, setItem] = useState("");
