@@ -27,12 +27,12 @@ function LandingPage() {
 
   return (
     <div className="Landing-Wrapper">
-      {/* Background Image */}
+      
       <div className="content-image">
         <img src={background} alt="Background" />
       </div>
 
-      {/* Content on top of image */}
+      
       <div className="Header">
         <div className="text-logo">LXRe</div>
         <nav className="nav">
