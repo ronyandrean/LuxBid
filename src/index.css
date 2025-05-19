@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* @import "tailwindcss"; */
+=======
+/* @import "tailwindcss";
+>>>>>>> 938947ce5f0d5264256e2c389ea04a7e7b04e75e
 
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
@@ -74,4 +78,4 @@ button {
   button {
     background-color: #f9f9f9;
   }
-}
+} */
