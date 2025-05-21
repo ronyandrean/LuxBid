@@ -7,19 +7,19 @@
     /* background-color: black; */
 }
 
-body {
-    background-image: url('../assets/background-landing-baru.jpg');
-    background-position: center;
-    background-size: cover;
-    overflow: hidden;
+.Register-Wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: auto;
+  background: url('../assets/background-landing-baru.jpg') no-repeat center center; 
+  background-size: cover;
 }
-
-
 .main-container-register {
     display: flex;
     justify-content: center;
     height: 90vh;
-    /* align-items: center; */
+    width: 100%;
 }
 
 .container-outer {

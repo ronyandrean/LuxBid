@@ -1,13 +1,15 @@
 import React from "react";
 import { useState, useEffect, useRef} from "react"
-import "./AboutUs.css"
+import "../style/AboutUs.css"
 import { ChevronDown } from "lucide-react"
-import AboutBackground from './assets/background-landing-baru.jpg'
+import AboutBackground from '../assets/background-landing-baru.jpg'
 import { Link } from "react-router-dom";
-import GearIcon from './assets/gearicon.png'
+import GearIcon from '../assets/gearicon.png'
+import AboutFooter from "@/pages/Footer";
+import Navbar from "./Navbar";
 
 
-const AboutUsPage = () => {
+const AboutUs = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -61,30 +63,15 @@ const AboutUsPage = () => {
     },
   ]
   return (
-    <div className="About-Content">
-      <div className="Header-About">
-        <div className="About-Image">
-          <img src={AboutBackground} alt="" />
-          <h1 className="about-title">ABOUT</h1>
-        </div>
-        <div className="text-logo-About">LXRe</div> 
-        <nav className="nav-About">
-          <div className="nav-item dropdown" ref={dropdownRef}>
-            <button onClick={toggleDropdown} className="dropdown-button" aria-expanded={isDropdownOpen}>
-              Collection <span className={`dropdown-arrow ${isDropdownOpen ? "open" : ""}`}>▼</span>
-            </button>
-            {isDropdownOpen && (
-              <div className="dropdown-menu nav-item-dropdown">
-                <Link to="/collection/luxury" className="dropdown-item">Luxury</Link>
-                <Link to="/collection/watches" className="dropdown-item">Watches</Link>
-                <Link to="/collection/jewelry" className="dropdown-item">Jewelry</Link>
-                <Link to="/collection/fashion" className="dropdown-item">Fashion</Link>
-              </div>
-            )}
-          </div>
-          <Link to="/about" className="nav-item">About</Link>
-          <Link to="/account" className="nav-item">Account</Link>
-        </nav>
+    <div className="About-Wrapper">
+      
+      <div className="About-Content">
+      <div className="Header-Collection">
+        <Navbar/>
+      <div className="About-Image">
+        {/* <img src={AboutBackground} alt="" /> */}
+        <h1 className="about-title">About</h1>
+      </div>
       </div>
       <section className="benefits-section">
         <h2 className="benefits-title">Benefits</h2>
@@ -133,12 +120,10 @@ const AboutUsPage = () => {
             ))}
           </div>
       </section>
-      <footer className="about-footer">
-          <div className="footer-logo">LXRe</div>
-          <div className="footer-copyright">© 2025 Luxure</div>
-      </footer>
+      <AboutFooter/>
     </div>
+  </div>
   );
 };
 
-export default AboutUsPage;
+export default AboutUs;
