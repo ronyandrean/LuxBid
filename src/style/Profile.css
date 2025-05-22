@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand');
+@import url('https://fonts.googleapis.com/css2?family=Gloock');
+
+.profile-body {
+    background-color: black;
+}
+
+.full-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    height: 90vh;
+}
+
+.upper-profile {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    min-width: 1100px;
+    /* justify-content: left; */
+}
+
+.profile-desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    gap: 20px;
+}
+
+.profile-picture img{
+    border-radius: 100%;
+    height: 200px;
+}
+
+.profile-desc p {
+    height: 15px;
+}
+
+.profile-desc p span{
+    font-family: "Gloock", serif;
+}
+
+.profile-desc h2 {
+    font-size: 30px;
+}
+
+.profile-desc h1 {
+    font-family: "Gloock", serif;
+    font-size: 50px;
+    height: 30px;
+    color: #008564;
+}
+
+.profile-desc .button-profile {
+    border: 1px solid white;
+    text-align: center;
+    width: 90px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.profile-desc .button-profile:hover {
+    background-color: white;
+    color: #008564;
+    transition: 0.4s ease;
+}
+
+.hr-line-profile {
+    width: 1100px;
+}
+
+.lower-profile {
+    display: flex;
+    flex-direction: column;
+    min-width: 1000px;
+    gap: 10px;
+}
+
+.button-profile-lower {
+    /* background-color: red; */
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    /* flex-direction: column; */
+}
+
+.button-profile-lower img {
+    height: 30px;
+}
+
+.link-profile:hover {
+    text-decoration: underline;
+    transition: 0.4s ease;
+}
