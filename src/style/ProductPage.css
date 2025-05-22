@@ -1,0 +1,106 @@
+*::-webkit-scrollbar {
+  display: none;               
+}
+
+
+html, body, #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.Product-Page-Wrapper {
+    background-color: #000000;
+}
+.brand-name {
+    padding-left: 4rem;
+    padding-right: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-top: 1px solid white;
+}
+.Page-Content-2{
+    display: flex;
+    padding: 1rem;
+    margin-left: 6rem;
+    flex-direction: row;
+    gap: 60px;
+}
+.Wrapper-1{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 50%;
+    margin-bottom: 2rem;
+}
+.image-1 {
+  width: 100%;
+  height: 400px;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.image-1 img:hover {
+  transform: scale(1.05);
+}
+
+.image-2 {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.image-2 img {
+  width: 200px;
+  height: 80px;
+  background-color: #fff;
+  border-radius: 8px;
+  object-fit: contain;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.image-2 img:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+.Wrapper-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 1rem;
+}
+.Right-Section-1{
+    width: 100%;
+}
+.Text-1 {
+    font-size: 2rem;
+    font-family: 'Gloock', serif;
+}
+.Right-Section-3 {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    border-bottom: 1px solid;
+    padding-bottom: 1rem;
+}

@@ -9,6 +9,7 @@ import CollectionLuxury from './pages/CollectionLuxury';
 import CollectionWatchesPage from './pages/CollectionWatches'
 import CollectionJewerlyPage from './pages/CollectionJewerly';
 import CollectionFashionPage from './pages/CollectionFashion';
+import ProductPage from './pages/ProductPage'
 
 import {
   BrowserRouter,
@@ -31,6 +32,7 @@ function App() {
           <Route path="/collection/Watches" element={<CollectionWatchesPage />} />
           <Route path="/collection/jewelry" element={<CollectionJewerlyPage />} />
           <Route path="/collection/fashion" element={<CollectionFashionPage />} />
+          <Route path="/Clicked/Page" element={<ProductPage />} />
         </Routes>
       </BrowserRouter>
     </>
