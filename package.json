@@ -31,6 +31,8 @@
     "tailwindcss": "^4.1.6"
   },
   "devDependencies": {
+    "@dfinity/auth-client": "^2.4.1",
+    "@dfinity/identity": "^2.4.1",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",
     "@types/node": "^22.15.17",
