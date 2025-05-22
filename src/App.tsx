@@ -9,6 +9,7 @@ import CollectionLuxury from './pages/CollectionLuxury';
 import CollectionWatchesPage from './pages/CollectionWatches'
 import CollectionJewerlyPage from './pages/CollectionJewerly';
 import CollectionFashionPage from './pages/CollectionFashion';
+
 import ProductPage from './pages/ProductPage'
 
 import {
@@ -17,7 +18,13 @@ import {
   Route,
   createBrowserRouter,
 } from 'react-router-dom';
+
+
+
 import AboutUs from './pages/AboutUs';
+import { AuthClient } from '@dfinity/auth-client';
+import { createActor } from './declarations/backend';
+import { canisterId } from './declarations/backend/index.js';
 
 function App() {
   return (

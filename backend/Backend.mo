@@ -4,6 +4,7 @@ import Time "mo:base/Time";
 import List "mo:base/List";
 import Array "mo:base/Array";
 import Iter "mo:base/Iter";
+import Principal "mo:base/Principal";
 
 actor {
 
@@ -119,5 +120,9 @@ actor {
     } else {
       return "Product not found.";
     };
+  };
+
+  public query (message) func greet() : async Text {
+    return "Hello, " # Principal.toText(message.caller) # "!";
   };
 };
