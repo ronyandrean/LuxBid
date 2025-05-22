@@ -57,7 +57,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className='login-body'>
       {/* Content on top of image */}
       <div className="Header">
         <div className="logo-image">

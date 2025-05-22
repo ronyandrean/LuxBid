@@ -56,7 +56,7 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <div className='register-body'>
       {/* Content on top of image */}
       <div className="Header">
         <div className="logo-image">

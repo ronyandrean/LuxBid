@@ -7,6 +7,12 @@
     /* background-color: black; */
 }
 
+.register-body {
+    background-image: url('../assets/background-landing-baru.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
 .Register-Wrapper {
   position: relative;
   width: 100%;
