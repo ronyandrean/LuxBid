@@ -23,8 +23,8 @@ import {
 
 import AboutUs from './pages/AboutUs';
 import { AuthClient } from '@dfinity/auth-client';
-import { createActor } from './declarations/backend';
-import { canisterId } from './declarations/backend/index.js';
+// import { createActor } from './declarations/backend';
+// import { canisterId } from './declarations/backend/index.js';
 
 function App() {
   return (
