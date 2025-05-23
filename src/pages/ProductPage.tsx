@@ -4,10 +4,12 @@ import Navbar from './Navbar';
 import '../style/ProductPage.css';
 import Jordanshoes from '../assets/jordanXtravisscott.png';
 import AboutFooter from './Footer';
+import { X } from 'lucide-react';
 
 const ProductPage = () => {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [showBidPopup, setShowBidPopup] = useState(false);
+  const [bidAmount, setBidAmount] = useState("")
 
   const sizes = ['40', '41', '42', '43', '44', '45', '46'];
 
@@ -105,7 +107,12 @@ const ProductPage = () => {
                 <div className="price-value">IDR 9,100,000</div>
 
                 <div className="action-buttons">
-                  <button className="bid-button" onClick={() => setShowBidPopup(true)}>Bid Now</button>
+                  <button
+                    className="bid-button"
+                    onClick={() => setShowBidPopup(true)}
+                  >
+                    Bid Now
+                  </button>
                   <button className="favorite-button">Add to Favorites</button>
                 </div>
 
@@ -498,7 +505,6 @@ const ProductPage = () => {
                   <polyline points="9 18 15 12 9 6"></polyline>
                 </svg>
               </button> */}
-
             </div>
           </div>
           <AboutFooter />
@@ -507,24 +513,52 @@ const ProductPage = () => {
       {showBidPopup && (
         <div className="modal-overlay">
           <div className="modal-content">
-            <button className="close-button" onClick={() => setShowBidPopup(false)}>×</button>
-            <p className="market-price">
-              Market Price : <span className="market-value">IDR 9.100.000</span>
-            </p>
-            <h2>Bidding Option</h2>
-            <p className="balance">
-              Your Balance : <span className="balance-value">IDR 5.000.000</span>
-            </p>
-            <label>
-              Enter Bid Price*
-              <small>Price must be higher than last price</small>
-              <input type="text" placeholder="IDR" />
-            </label>
-            <button className="bid-now">Bid Now</button>
+            <div className="modal-content-1">
+              <button
+                onClick={() => setShowBidPopup(false)}
+                className="close-button"
+              >
+                <X className="icon" />
+              </button>
+
+              <div className="form-content">
+                <p className="Market-Price">
+                  Market Price :{' '}
+                  <span className="market-price-value">9.100.000</span>
+                </p>
+                <h2 className="Bidding-Content">Bidding Content</h2>
+                <p className="balance-label">
+                  Your Balance:{' '}
+                  <span className="balance-value">5.000.000</span>
+                </p>
+                <div className="input-group">
+                  <label className="input-label">
+                    Enter Bid Price*
+                    <div className="input-hint">
+                      Price must be higher than last price
+                    </div>
+                  </label>
+                  <input
+                    type="text"
+                    value={bidAmount}
+                    onChange={(e) => setBidAmount(e.target.value)}
+                    placeholder="IDR"
+                    className="bid-input"
+                  />
+                </div>
+
+                <button className="bid-button">Bid Now</button>
+
+
+              </div>
+
+            </div>
+            <div className="modal-content-2">
+              <img src={Jordanshoes} alt="" />
+            </div>
           </div>
         </div>
       )}
-      
     </>
   );
 };
