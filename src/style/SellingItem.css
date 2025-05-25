@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand');
+@import url('https://fonts.googleapis.com/css2?family=Gloock');
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans');
+@import url('https://fonts.googleapis.com/css2?family=Quando');
+@import url('https://fonts.googleapis.com/css2?family=Quattrocento+Sans');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif');
+
+.selling-item-body {
+    background-image: url('../assets/background-landing-baru.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.selling-item-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+
+.selling-item-title h1 {
+    /* background-color: red; */
+    font-family: "Public Sans", sans-serif;
+    font-size: 40px;
+    color: white;
+    /* font-weight: bold; */
+    margin-bottom: 20px;
+}
+
+.selling-item-title p {
+    font-family: "PT Serif", serif;
+    color: white;
+}
+
+.outer-selling-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-color: white; */
+    margin-bottom: 80px;
+}
+
+.outin-sell-item {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding: 30px 40px;
+    border: 1px solid white;
+    font-family: "Public Sans", sans-serif;
+}
+
+.selling-item-desc {
+    display: flex;
+    margin-top: 40px;
+    justify-content: space-between;
+    min-width: 800px;
+}
+
+.label-upload {
+    background-color: #0C0C0C;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 800px;
+    min-height: 300px;
+    border-radius: 10px;
+    border: 1px dashed white;
+    font-family: "Public Sans", sans-serif;
+}
+
+.desc-item-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.style-desc-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.style-desc-1 p {
+    font-family: "Public Sans", sans-serif;
+}
+
+.style-desc-1 input{
+    background-color: #0C0C0C;
+    border: 1px solid white;
+    border-radius: 5px;
+    min-width: 350px;
+    padding: 5px 10px;
+    font-family: "Public Sans", sans-serif;
+}
+
+.style-desc-1 textarea {
+    background-color: #0C0C0C;
+    border: 1px solid white;
+    border-radius: 5px;
+    min-width: 350px;
+    min-height: 170px;
+    padding: 5px 10px;
+    resize: none;
+    font-family: "Public Sans", sans-serif;
+}
+
+.style-desc-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.style-desc-2 p {
+    font-family: "Public Sans", sans-serif;
+}
+
+.style-desc-2 input{
+    background-color: #0C0C0C;
+    border: 1px solid white;
+    border-radius: 5px;
+    min-width: 350px;
+    padding: 5px 10px;
+    font-family: "Public Sans", sans-serif;
+}
+
+.style-desc-2 select{
+    background-color: #0C0C0C;
+    border: 1px solid white;
+    border-radius: 5px;
+    min-width: 350px;
+    padding: 5px 10px;
+    font-family: "Public Sans", sans-serif;
+}
+
+.desc-item-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sell-item-link {
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-top: 20px;
+}
+
+.sell-item-link-inner {
+    background-color: #31996B;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px 20px;
+    /* font-size: 15px; */
+    font-family: "Public Sans", sans-serif;
+}
+
+.sell-item-link-inner:hover {
+    background-color: white;
+    color: #31996B;
+    transition: 0.4s ease;
+}
+

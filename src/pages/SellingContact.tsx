@@ -54,8 +54,8 @@ const SellingContact = () => {
               AND PRIVACY POLICY</p>
             </div>
             <div className='button-selling'>
-              <Link to="" className='button-selling-style-green'>CONTINUE</Link>
-              <Link to="" className='button-selling-style-white'>BACK</Link>
+              <Link to="/selling-item" className='button-selling-style-green'>CONTINUE</Link>
+              <Link to="/" className='button-selling-style-white'>BACK</Link>
             </div>
           </form>
         </div>

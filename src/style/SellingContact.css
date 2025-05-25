@@ -67,13 +67,19 @@
     gap: 5px;
 }
 
+.input-style-outer p {
+    font-family: "Public Sans", sans-serif;
+}
+
 .input-style-outer input[type='text'] {
     color: black;
+    font-family: "Public Sans", sans-serif;
 }
 
 .input-style-contact::placeholder {
     color: #AAAAAA;
     font-size: 14px;
+    font-family: "Public Sans", sans-serif;
 }
 
 .check-box-style {
@@ -87,6 +93,7 @@
 .check-box-style p {
     font-size: 13px;
     line-height: 15px;
+    font-family: "Public Sans", sans-serif;
 }
 
 .check-box-style input[type="checkbox"] {
@@ -138,6 +145,7 @@
     min-width: 400px;
     padding: 7px 0;
     text-align: center;
+    font-family: "Public Sans", sans-serif;
 }
 
 .button-selling-style-green:hover, 
@@ -148,11 +156,12 @@
 }
 
 .button-selling-style-white {
-background-color: white;
+    background-color: white;
     font-weight: bold;
     color: black;
     border-radius: 5px;
     min-width: 300px;
     padding: 7px 0;
     text-align: center;
+    font-family: "Public Sans", sans-serif;
 }
