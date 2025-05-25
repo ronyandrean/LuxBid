@@ -9,9 +9,11 @@ import CollectionLuxury from './pages/CollectionLuxury';
 import CollectionWatchesPage from './pages/CollectionWatches'
 import CollectionJewerlyPage from './pages/CollectionJewerly';
 import CollectionFashionPage from './pages/CollectionFashion';
-import Profile from './pages/profile';
-
-import ProductPage from './pages/ProductPage'
+import Profile from './pages/Profile';
+import ProductPage from './pages/ProductPage';
+import History from './pages/History';
+import HistorySelling from './pages/HistorySelling'
+import SellingContact from './pages/SellingContact';
 
 import {
   BrowserRouter,
@@ -42,6 +44,11 @@ function App() {
           <Route path="/collection/fashion" element={<CollectionFashionPage />} />
           <Route path="/Clicked/Page" element={<ProductPage />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/history-bidding" element={<History />} />
+          <Route path="/history-selling" element={<HistorySelling />} />
+          <Route path="/selling-contact" element={<SellingContact />} />
+
+
         </Routes>
       </BrowserRouter>
     </>

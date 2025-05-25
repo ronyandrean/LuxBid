@@ -40,7 +40,7 @@ const Navbar = () => {
           </Link>
         </div>
         <nav className="nav">
-          <div className="nav-item dropdown" ref={dropdownRef}>
+          {/* <div className="nav-item dropdown" ref={dropdownRef}>
             <button
               onClick={toggleDropdown}
               className="dropdown-button"
@@ -69,12 +69,18 @@ const Navbar = () => {
                 </Link>
               </div>
             )}
-          </div>
+          </div> */}
+          <Link to="" className="nav-item">
+            Collections
+          </Link>
           <Link to="/about" className="nav-item">
             About
           </Link>
-          <Link to="/account" className="nav-item">
-            Account
+          <Link to="" className="nav-item">
+            How it Works
+          </Link>
+          <Link to="" className="nav-wallet">
+            Connect Wallet
           </Link>
         </nav>
       </div>
