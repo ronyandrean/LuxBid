@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand');
+@import url('https://fonts.googleapis.com/css2?family=Gloock');
+
+.history-body {
+    background-color: black;
+    min-height: 100vh;
+}
+
+.header-history {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    /* padding: 100px 200px 60px 120px; */
+    padding: 100px 150px 70px 150px;
+    /* background-color: red; */
+}
+
+.header-inner-history {
+    display: flex;
+    gap: 10px;
+}
+
+.tab-history:hover {
+    text-decoration: underline;
+}
+
+.active-page-history {
+    font-weight: bold;
+}
+
+.header-history h2 {
+    font-size: 50px;
+}
+
+.hr-style {
+    padding: 0 150px;
+}
+
+.hr-style hr {
+    max-width: auto;
+    margin-bottom: 60px;
+}
+
+.row-product-history {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* gap: 15px; */
+    margin-bottom: 30px;
+    padding: 0 150px ;
+    /* width: 1620px; */
+}
+
+.product-card {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.border-image {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 70px 30px;
+    background-color: white;
+}
+
+.border-image img {
+    max-height: 50px;
+    /* border: 1px solid white; */
+    /* border-radius: 10px;
+    padding: 50px 10px; */
+    /* background-color: white; */
+}
+
+.history-bid-desc {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.history-bid-desc h2 {
+    font-family: "Gloock", serif;
+    font-size: 30px;
+    max-width: 300px;
+    /* height: 110px; */
+    line-height: 35px;
+}
+
+.history-bid-desc p {
+    font-family: "Gloock", serif;
+    color: #008564;
+}
+
+.green-circle-bid {
+    background-color: green;
+    height: 18px;
+    width: 18px;
+    border-radius: 100%;
+}
+
+.red-circle-bid {
+    background-color: red;
+    height: 18px;
+    width: 18px;
+    border-radius: 100%;
+}
+
+.white-circle-bid {
+    background-color: white;
+    height: 18px;
+    width: 18px;
+    border-radius: 100%;
+}
+
+.status-history-bidding {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.status-history-bidding p {
+    font-family: "Quicksand", sans-serif;
+    color: white;
+}
+
+.page-history-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 60px;
+}
+
+.page-history-button .button-next {
+    color: white;
+    border: 1px solid white;
+    border-radius: 100%;
+    padding: 16px 25px;
+    background-color: black;
+    text-align: center;
+}
+
+.page-history-button .button-next:hover {
+    background-color: white;
+    color: #008564;
+    transition: 0.4s ease;
+
+    .arrow {
+        border: solid #008564;
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        padding: 3px;
+    }
+}
+
+.arrow {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.see-bid:hover {
+    text-decoration: underline;
+}

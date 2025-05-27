@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand');
+@import url('https://fonts.googleapis.com/css2?family=Gloock');
+
+.history-selling-body {
+    background-color: black;
+}
+
+.header-history {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    /* padding: 100px 200px 60px 120px; */
+    padding: 100px 150px 70px 150px;
+    /* background-color: red; */
+}
+
+.header-inner-history {
+    display: flex;
+    gap: 10px;
+}
+
+.tab-history:hover {
+    text-decoration: underline;
+}
+
+.active-page-history {
+    font-weight: bold;
+}
+
+.header-history h2 {
+    font-size: 50px;
+}
+
+.hr-style {
+    padding: 0 150px;
+}
+
+.hr-style hr {
+    max-width: auto;
+    margin-bottom: 60px;
+}
+
+/* .hr-style {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+/* .hr-style hr {
+    width: 1290px;
+    margin-bottom: 60px;
+} */
+
+.product-list-selling {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.border-image-selling {
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 20px;
+    max-width: 190px;
+    padding: 45px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.border-image-selling img {
+    height: 80px;
+}
+
+.product-card-selling {
+    display: flex;
+    gap: 25px;
+    padding: 0 200px;
+    /* background-color: red; */
+}
+
+.product-selling-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+}
+
+.product-selling-card h2 {
+    font-family: "Gloock", serif;
+} 
+
+.product-selling-card p {
+    font-family: "Gloock", serif;
+    color: #008564;
+}
+
+.product-selling-card p span {
+    color: white;
+}
+
+.product-selling-card h2 {
+    font-size: 30px;
+}
+
+.status-history-bidding p{
+    font-family: "Quicksand", sans-serif;
+    color: white;
+    /* background-color: red; */
+}
+
+.link-selling {
+    display: flex;
+    gap: 20px;
+}
+
+.see-bid:hover {
+    text-decoration: underline;
+}
+
+.green-circle-bid {
+    background-color: green;
+    height: 18px;
+    width: 18px;
+    border-radius: 100%;
+}
+
+.red-circle-bid {
+    background-color: red;
+    height: 18px;
+    width: 18px;
+    border-radius: 100%;
+}
+
+.white-circle-bid {
+    background-color: white;
+    height: 18px;
+    width: 18px;
+    border-radius: 100%;
+}

@@ -45,7 +45,7 @@ const profile = () => {
           </div>
           <div className="button-profile-lower">
             <img src={historylogo} alt="" />
-            <Link to="" className='link-profile'>History</Link>
+            <Link to="/history-bidding" className='link-profile'>History</Link>
           </div>
           <div className="button-profile-lower">
             <img src={settinglogo} alt="" />

@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand');
+@import url('https://fonts.googleapis.com/css2?family=Gloock');
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans');
+@import url('https://fonts.googleapis.com/css2?family=Quando');
+@import url('https://fonts.googleapis.com/css2?family=Quattrocento+Sans');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif');
+
+.body-profiles {
+    background-color: black;
+}
+
+.profiles-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 30px;
+}
+
+.profiles-image img {
+    height: 150px;
+    border-radius: 100%;
+}
+
+.profiles-content-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profiles-name {
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    /* height: 100px; */
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.profiles-name h1 {
+    font-weight: bolder;
+    font-size: 40px;
+    height: 30px;
+}
+
+.profiles-name h3 {
+    border: 1px solid #31996B;
+    padding: 2px 30px;
+    border-radius: 5px;
+    color: #31996B;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.edit-profiles-button {
+    background-color: #31996B;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    margin-left: 100px;
+}
+
+#outer-showcase-profile {
+    background-image: url(../assets/background-landing-baru.jpg);
+    background-position: center;
+    background-size: cover;
+    padding-bottom: 80px;
+}
+
+.showcase-profile {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    margin-top: 50px;
+    padding-top: 30px;
+}
+
+.showcase-profile-inner {
+    /* background-color: white; */
+    border: 1px solid white;
+    text-align: center;
+    padding: 25px 70px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.showcase-profile-inner h1 {
+    color: #31996B;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Wallet Payment */
+.wallet-payments {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    /* max-width: 1200px;
+    margin: 0 auto; */
+    /* border: 1px solid white; */
+    margin: 50px 0;
+}
+
+.header-wallet-payments {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 1200px; 
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}
+
+.header-wallet-payments h1 {
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+}
+
+.wallet-link-style {
+    background-color: #31996B;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    margin-left: 100px;
+}
+
+.inner-wallet-payments {
+    display: flex;
+    /* background-color: red; */
+    flex-direction: column;
+    min-width: 1200px;
+    padding: 20px 20px;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding-bottom: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.inner-wallet-payments h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+}
+
+.most-inner-wallet-payments {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.most-inner-wallet-payments h1 {
+    color: #31996B;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.most-inner-wallet-payments p {
+    color: white;
+    font-weight: 100px;
+}
+
+.most-inner-button-1 {
+    background-color: #31996B;
+    min-width: 1150px;
+    font-weight: bold;
+    text-align: center;
+    padding: 4px;
+    border-radius: 5px;
+}
+
+.most-inner-button-2 {
+    background-color: white;
+    color: black;
+    min-width: 1150px;
+    font-weight: bold;
+    text-align: center;
+    padding: 4px;
+    border-radius: 5px;
+}
+
+/* Transaction History Table */
+.transaction-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 24px;
+  color: white;
+}
+
+.transaction-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: white;
+}
+
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: transparent;
+}
+
+.transaction-table thead th {
+  background: rgba(255, 255, 255, 0);
+  padding: 16px 12px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.transaction-table tbody tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+  transition: background-color 0.2s ease;
+}
+
+/* .transaction-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+} */
+
+.transaction-table tbody td {
+  padding: 16px 12px;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #4ade80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  color: white;
+}
+
+.user-name {
+  color: white;
+  font-weight: 500;
+}
+
+.transaction-type {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+.transaction-description {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.amount-positive {
+  color: #4ade80;
+  font-weight: 600;
+}
+
+.amount-negative {
+  color: #f87171;
+  font-weight: 600;
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.status-completed {
+  background: rgba(74, 222, 128, 0.2);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.3);
+}
+
+.status-pending {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.status-failed {
+  background: rgba(248, 113, 113, 0.2);
+  color: #f87171;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}

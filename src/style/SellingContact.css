@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand');
+@import url('https://fonts.googleapis.com/css2?family=Gloock');
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans');
+@import url('https://fonts.googleapis.com/css2?family=Quando');
+@import url('https://fonts.googleapis.com/css2?family=Quattrocento+Sans');
+
+.selling-contact-body {
+    background-image: url('../assets/background-landing-baru.jpg');
+    /* height: 100vh; */
+    background-position: center;
+    background-size: cover;
+}
+
+.outer-content-selling {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.outer-content-selling form {
+    max-width: auto;
+}
+
+.form-contact-style form{
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 50px 0;
+}
+
+.form-title-selling {
+    /* background-color: rebeccapurple; */
+    min-width: 400px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.form-title-selling h2{
+    /* background-color: rebeccapurple;s */
+    text-align: left;
+    font-family: "Public Sans", sans-serif;
+    font-weight: 900;
+    font-size: 30px;
+    color: white;
+}
+
+.form-title-selling p {
+    color: white;
+    font-size: 15px;
+}
+
+.input-style-contact {
+    background-color: white;
+    padding: 10px 20px;
+    min-width: 400px;
+    /* color: black; */
+}
+
+.input-style-outer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-style-outer p {
+    font-family: "Public Sans", sans-serif;
+}
+
+.input-style-outer input[type='text'] {
+    color: black;
+    font-family: "Public Sans", sans-serif;
+}
+
+.input-style-contact::placeholder {
+    color: #AAAAAA;
+    font-size: 14px;
+    font-family: "Public Sans", sans-serif;
+}
+
+.check-box-style {
+    display: flex;
+    max-width: 400px;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.check-box-style p {
+    font-size: 13px;
+    line-height: 15px;
+    font-family: "Public Sans", sans-serif;
+}
+
+.check-box-style input[type="checkbox"] {
+  appearance: none; /* Remove default style */
+  -webkit-appearance: none; /* Safari */
+  width: 30px;
+  height: 16px;
+  /* border: 2px solid #ccc; */
+  /* border-radius: 4px; */
+  background-color: white;
+  cursor: pointer;
+  position: relative;
+}
+
+.check-box-style input[type="checkbox"]:checked {
+  background-color: #00AF83;
+  border-color: #00AF83;
+}
+
+.check-box-style input[type="checkbox"]::after {
+  content: '';
+  position: absolute;
+  top: 2.5px;
+  left: 8px;
+  width: 4px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  display: none;
+}
+
+.check-box-style input[type="checkbox"]:checked::after {
+  display: block;
+}
+
+.button-selling {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 50px;
+}
+
+.button-selling-style-green {
+    background-color: #00AF83;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
+    min-width: 400px;
+    padding: 7px 0;
+    text-align: center;
+    font-family: "Public Sans", sans-serif;
+}
+
+.button-selling-style-green:hover, 
+.button-selling-style-white:hover {
+    background-color: #05080D;
+    color: #00AF83;
+    transition: 0.4s ease;
+}
+
+.button-selling-style-white {
+    background-color: white;
+    font-weight: bold;
+    color: black;
+    border-radius: 5px;
+    min-width: 300px;
+    padding: 7px 0;
+    text-align: center;
+    font-family: "Public Sans", sans-serif;
+}
