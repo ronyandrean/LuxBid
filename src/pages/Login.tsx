@@ -4,14 +4,14 @@ import logo from '../assets/LXRe.png';
 import arrowLeft from '../assets/arrow-narrow-left.png';
 import { Link } from 'react-router-dom';
 import { AuthClient } from '@dfinity/auth-client';
-// import { createActor } from '../declarations/backend';
-// import { canisterId } from '../declarations/backend/index.js';
+import { createActor } from '../declarations/backend';
+import { canisterId } from '../declarations/backend/index.js';
 
-// const network = process.env.DFX_NETWORK;
-// const identityProvider =
-//   network === 'ic'
-//     ? 'https://identity.ic0.app'
-//     : 'http://rdmx6-jaaaa-aaaaa-aaadq-cai.localhost:4943';
+const network = process.env.DFX_NETWORK;
+const identityProvider =
+  network === 'ic'
+    ? 'https://identity.ic0.app'
+    : 'http://rdmx6-jaaaa-aaaaa-aaadq-cai.localhost:4943';
 
 const Login = () => {
   const [authClient, setAuthClient] = useState<any>(null);
@@ -40,21 +40,21 @@ const Login = () => {
     };
   }, []);
 
-  // const handleLogin = async () => {
-  //   if (authClient) {
-  //     await authClient.login({
-  //       identityProvider,
-  //       onSuccess: async () => {
-  //         const identity = authClient.getIdentity();
-  //         const actor = createActor(canisterId, {
-  //           agentOptions: { identity },
-  //         });
-  //         // Optional: Redirect or update app state after login
-  //         console.log('Login success');
-  //       },
-  //     });
-  //   }
-  // };
+  const handleLogin = async () => {
+    if (authClient) {
+      await authClient.login({
+        identityProvider,
+        onSuccess: async () => {
+          const identity = authClient.getIdentity();
+          const actor = createActor(canisterId, {
+            agentOptions: { identity },
+          });
+          // Optional: Redirect or update app state after login
+          console.log('Login success');
+        },
+      });
+    }
+  };
 
   return (
     <div className='login-body'>
@@ -110,16 +110,16 @@ const Login = () => {
 
           <div className="user-input-login">
             <p>Enter Identity to Continue</p>
-            <input type="text" placeholder="Internet Identity" disabled />
+            <input type="text" placeholder="Internet Identity"/>
           </div>
 
           <div className="container-inner">
-            {/* <button className="button-green" onClick={handleLogin}>
+            <button className="button-green" onClick={handleLogin}>
               Continue
             </button>
             <button className="button-white" onClick={handleLogin}>
               Continue with another device
-            </button> */}
+            </button>
           </div>
           <div>
             <div className="link-style">

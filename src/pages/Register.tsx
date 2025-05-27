@@ -3,14 +3,14 @@ import '../style/Register.css';
 import logo from '../assets/LXRe.png';
 import { Link } from 'react-router-dom';
 import { AuthClient } from '@dfinity/auth-client';
-// import { createActor } from '../declarations/backend';
-// import { canisterId } from '../declarations/backend/index.js';
+import { createActor } from '../declarations/backend';
+import { canisterId } from '../declarations/backend/index.js';
 
-// const network = process.env.DFX_NETWORK;
-// const identityProvider =
-//   network === 'ic'
-//     ? 'https://identity.ic0.app'
-//     : 'http://rdmx6-jaaaa-aaaaa-aaadq-cai.localhost:4943';
+const network = process.env.DFX_NETWORK;
+const identityProvider =
+  network === 'ic'
+    ? 'https://identity.ic0.app'
+    : 'http://rdmx6-jaaaa-aaaaa-aaadq-cai.localhost:4943';
 
 const Register = () => {
   const [authClient, setAuthClient] = useState<any>(null);
@@ -39,21 +39,21 @@ const Register = () => {
     };
   }, []);
 
-  // const handleRegister = async () => {
-  //   if (authClient) {
-  //     await authClient.login({
-  //       identityProvider,
-  //       onSuccess: async () => {
-  //         const identity = authClient.getIdentity();
-  //         const actor = createActor(canisterId, {
-  //           agentOptions: { identity },
-  //         });
-  //         // Optional: Redirect or update app state after registration
-  //         console.log('Register success');
-  //       },
-  //     });
-  //   }
-  // };
+  const handleRegister = async () => {
+    if (authClient) {
+      await authClient.login({
+        identityProvider,
+        onSuccess: async () => {
+          const identity = authClient.getIdentity();
+          const actor = createActor(canisterId, {
+            agentOptions: { identity },
+          });
+          // Optional: Redirect or update app state after registration
+          console.log('Register success');
+        },
+      });
+    }
+  };
 
   return (
     <div className='register-body'>
@@ -109,9 +109,9 @@ const Register = () => {
           <p>Bidding E-commerce System Using Smart Contracts</p>
 
           <div className="container-inner">
-            {/* <button className="button-green" onClick={handleRegister}>
+            <button className="button-green" onClick={handleRegister}>
               Create Internet Identity
-            </button> */}
+            </button>
             <Link to="/login" className="button-white">
               Use Existing
             </Link>

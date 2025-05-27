@@ -5,6 +5,7 @@ import background from '../assets/background-landing-baru.jpg';
 // import ClickSpark from './ClickSpark';
 import logo from '../assets/LXRe.png';
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 function LandingPage() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -63,6 +64,7 @@ function LandingPage() {
           </div>
         </section>
       </div>
+      <Footer/>
     </>
   );
 }
