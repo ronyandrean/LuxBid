@@ -21,13 +21,14 @@
 }
 
 .stats-card {
-  background-color: #121212;
+  background: rgba(var(--gray-800-rgb), .5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   padding: 24px 48px;
   display: flex;
   justify-content: space-between;
   width: 80%;
-  max-width: 900px;
+  max-width: 1200px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   text-align: center;
 }
@@ -38,7 +39,7 @@
 
 .stat-item h2 {
   color: #00b67a;
-  font-size: 24px;
+  font-size: 40px;
   font-weight: bold;
   margin: 0;
 }

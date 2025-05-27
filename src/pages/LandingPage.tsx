@@ -102,7 +102,9 @@ function LandingPage() {
               <button className="button-2">Learn More</button>
             </div>
           </div>
-          <StatsSection />
+          <div className="stats-section">
+            <StatsSection />
+          </div>
         </section>
 
         <section className="Landing-content-2">
@@ -116,7 +118,7 @@ function LandingPage() {
           </div>
           <div className="Content-2-Box-Content">
             <div className="Content-2-Box-1">
-              <Lock size={35} color="#0AC99A" />
+              <Lock size={50} color="#0AC99A" />
               <h2 className="Security">Smart Contract Security</h2>
               <p className="Box-1-Text">
                 Our platform combines luxury with cutting-edge blockchain
@@ -125,7 +127,7 @@ function LandingPage() {
               </p>
             </div>
             <div className="Content-2-Box-2">
-              <Cpu size={35} color="#0AC99A" />
+              <Cpu size={50} color="#0AC99A" />
               <h2 className="AI">AI Fraud Detection</h2>
               <p className="Box-1-Text-2">
                 Advanced AI algorithms monitor bidding patterns in real-time to
@@ -133,7 +135,7 @@ function LandingPage() {
               </p>
             </div>
             <div className="Content-2-Box-3">
-              <CircleStop size={35} color="#0AC99A" />
+              <CircleStop size={50} color="#0AC99A" />
               <h2 className="NFT">NFT Ownership Certificates</h2>
               <p className="Box-1-Text-3">
                 Winning bidders receive NFT certificates as proof of ownership,
@@ -165,24 +167,28 @@ function LandingPage() {
             </div>
           </div>
           <div className="BidCard-Wrapper">
-            <BidCard/>
-            <BidCard2/>
-            <BidCard/>
-            <BidCard/>
+            <BidCard />
+            <BidCard2 />
+            <BidCard />
+            <BidCard />
           </div>
         </section>
 
         <section className="Landing-content-4">
-            <h1 className='Content-4-text-1'>Ready to Experience the Future of Luxury Auctions?</h1>
-            <div className="Content-4-Text-2">
-              <p>Join thousands of luxury enthusiasts who have already discovered the security and</p>
-              <p>transparency of blockchain-based bidding.</p>
-            </div>
-            <button className='Content-4-btn'>Get Started Now</button>
+          <h1 className="Content-4-text-1">
+            Ready to Experience the Future of Luxury Auctions?
+          </h1>
+          <div className="Content-4-Text-2">
+            <p>
+              Join thousands of luxury enthusiasts who have already discovered
+              the security and
+            </p>
+            <p>transparency of blockchain-based bidding.</p>
+          </div>
+          <button className="Content-4-btn">Get Started Now</button>
         </section>
         <AboutFooter />
       </div>
-      <Footer/>
     </>
   );
 }

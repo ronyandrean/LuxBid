@@ -4,6 +4,25 @@ import '../style/SellingItem.css';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import buttonupload from '../assets/button-upload.png';
+import { Principal } from '@dfinity/principal';
+
+interface NewAuctionFormProps {
+  onSuccess: () => void;
+  onCancel: () => void;
+}
+
+interface FormDataType {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  productName: string;
+  startPrice: string;
+  fixPrice: string;
+  duration: string;
+  description: string;
+  image: string;
+}
 
 const SellingItem = () => {
   return (

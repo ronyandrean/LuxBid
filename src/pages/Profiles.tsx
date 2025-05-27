@@ -79,7 +79,7 @@ const Profiles = () => {
           <table className="transaction-table">
             <thead>
               <tr>
-                <th>Date</th>
+                <th>Name</th>
                 <th>Type</th>
                 <th>Description</th>
                 <th>Amount</th>
