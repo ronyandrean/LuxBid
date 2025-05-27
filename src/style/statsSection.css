@@ -1,0 +1,50 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stats-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; 
+  margin-bottom: -20px;
+  z-index: 10;
+  position: relative;
+  opacity: 0.9;
+  animation: fadeIn 2s ease-out forwards;
+}
+
+.stats-card {
+  background-color: #121212;
+  border-radius: 16px;
+  padding: 24px 48px;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  max-width: 900px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+.stat-item {
+  flex: 1;
+}
+
+.stat-item h2 {
+  color: #00b67a;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.stat-item p {
+  color: #ccc;
+  font-size: 14px;
+  margin-top: 6px;
+}
