@@ -1,6 +1,6 @@
 import React from 'react';
 import '../style/BidCard-2.css';
-import jordanshoes from '../assets/jordanXtravisscott.png';
+import jordanshoes from '../assets/bidcard2.png';
 
 const BidCard2 = () => {
   return (
@@ -15,8 +15,8 @@ const BidCard2 = () => {
         <div className="product-title-2">
           <div className="product-header-2">
             <div className="bid-text-1-2">
-              <h3>Jordan 1 Low Travis</h3>
-              <h3>Scott x Fragment</h3>
+              <h3>Jordan 4 Retro</h3>
+              <h3>White Laser</h3>
             </div>
             <div className="button-bid-1-2">
               <button>End</button>
@@ -24,14 +24,14 @@ const BidCard2 = () => {
           </div>
 
           <div className="product-footer-2">
-            <p>Limited edition timepiece with exquisite craftsmanship</p>
+            <p>Athletic shoe made with laser cut designs and premium materials.</p>
           </div>
         </div>
 
         <div className="bid-info-2">
           <div>
             <p className="label-2">Current Bid</p>
-            <p className="value">2.5 ICP</p>
+            <p className="value">5.4 ICP</p>
           </div>
           <div>
             <p className="label-2">Ends in</p>
@@ -40,7 +40,7 @@ const BidCard2 = () => {
         </div>
 
         <div className="footer-info-2">
-          <p className="bids-count-2">18 bids</p>
+          <p className="bids-count-2">21 bids</p>
           <button className="place-bid-btn-2">Auction Ended</button>
         </div>
       </div>

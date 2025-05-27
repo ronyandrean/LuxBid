@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import GearIcon from '../assets/gearicon.png'
 import AboutFooter from "@/pages/Footer";
 import Navbar from "./Navbar";
+import MiddleImage from '../assets/chanel.png'
+import logo from '../assets/LXRe.png'
 
 
 const AboutUs = () => {
@@ -70,38 +72,145 @@ const AboutUs = () => {
         <Navbar/>
       <div className="About-Image">
         {/* <img src={AboutBackground} alt="" /> */}
-        <h1 className="about-title">About</h1>
+        {/* <h1 className="about-title">About</h1> */}
       </div>
       </div>
-      <section className="benefits-section">
-        <h2 className="benefits-title">Benefits</h2>
-        <div className="benefits-container">
-          <div className="benefits-item-1">
-            <img src={GearIcon} alt="" />
-            <h3 className="benefit-title">USING SMART CONTRACTS</h3>
-            <p className="benefit-text">
-                Smart contracts are programs in a blockchain that execute when predetermined conditions are met. They
-                automate transactions without intermediaries, reducing costs and increasing transparency.
-            </p>
+
+      <section className="MiddlePart">
+          <div className="Middle-left">
+              <img src={MiddleImage} alt="" />
           </div>
-          <div className="benefits-item-2">
-            <img src={GearIcon} alt="" />
-            <h3 className="benefit-title">USING SMART CONTRACTS</h3>
-            <p className="benefit-text">
-                Smart contracts are programs in a blockchain that execute when predetermined conditions are met. They
-                automate transactions without intermediaries, reducing costs and increasing transparency.
+          <div className="Middle-Right">
+              {/* <h2 className="About-Us-Text-1">About</h2> */}
+                <p className="About-Us-Text-1">
+              {'About'
+                .split(' ')
+                .map((word, i) => (
+                  <span
+                    key={i}
+                    className="blur-word"
+                    style={{ animationDelay: `${i * 0.1}s` }}
+                  >
+                    {word}&nbsp;
+                  </span>
+                ))}
             </p>
+            
+            <h1 className="blur-animate">
+              <img src={logo} alt="" />
+            </h1>
+          <div className="desc">
+            <p className="Text-Landing-1">
+                {'Experience auction through the power of decentralized technology. Built on Web3'
+                  .split(' ')
+                  .map((word, i) => (
+                    <span
+                      key={i}
+                      className="blur-word"
+                      style={{ animationDelay: `${i * 0.2}s` }}
+                    >
+                      {word}&nbsp;
+                    </span>
+                  ))}
+              </p>
+              <p className="Text-Landing-1">
+                {'infrastructure and secured with blockchain and smart contracts, LXRe ensures'
+                  .split(' ')
+                  .map((word, i) => (
+                    <span
+                      key={i}
+                      className="blur-word"
+                      style={{ animationDelay: `${i * 0.2}s` }}
+                    >
+                      {word}&nbsp;
+                    </span>
+                  ))}
+              </p><p className="Text-Landing-1">
+                {'transparency, trust, and fairness in every transaction. We believe that privacy and'
+                  .split(' ')
+                  .map((word, i) => (
+                    <span
+                      key={i}
+                      className="blur-word"
+                      style={{ animationDelay: `${i * 0.2}s` }}
+                    >
+                      {word}&nbsp;
+                    </span>
+                  ))}
+              </p>
+              <p className="Text-Landing-1">
+                {'security are fundamental rights. That is why we have integrated Internet Identity—giving'
+                  .split(' ')
+                  .map((word, i) => (
+                    <span
+                      key={i}
+                      className="blur-word"
+                      style={{ animationDelay: `${i * 0.2}s` }}
+                    >
+                      {word}&nbsp;
+                    </span>
+                  ))}
+              </p>
+              <p className="Text-Landing-1">
+                {'users a seamless and secure login experience without compromising personal data.'
+                  .split(' ')
+                  .map((word, i) => (
+                    <span
+                      key={i}
+                      className="blur-word"
+                      style={{ animationDelay: `${i * 0.2}s` }}
+                    >
+                      {word}&nbsp;
+                    </span>
+                  ))}
+              </p>
+              <p className="Text-Landing-1">
+                {'Whether you are a collector, creator, or bidder, our mission is to empower you with'
+                  .split(' ')
+                  .map((word, i) => (
+                    <span
+                      key={i}
+                      className="blur-word"
+                      style={{ animationDelay: `${i * 0.2}s` }}
+                    >
+                      {word}&nbsp;
+                    </span>
+                  ))}
+              </p>
+              <p className="Text-Landing-1">
+                {'full control over your assets and bids in a truly borderless marketplace.'
+                  .split(' ')
+                  .map((word, i) => (
+                    <span
+                      key={i}
+                      className="blur-word"
+                      style={{ animationDelay: `${i * 0.2}s` }}
+                    >
+                      {word}&nbsp;
+                    </span>
+                  ))}
+              </p>
+
+                <br />
+                
+                <p className="Text-Landing-1">
+                {'Join us in building the future of auctions—open, decentralized, and made for everyone.'
+                  .split(' ')
+                  .map((word, i) => (
+                    <span
+                      key={i}
+                      className="blur-word"
+                      style={{ animationDelay: `${i * 0.2}s` }}
+                    >
+                      {word}&nbsp;
+                    </span>
+                  ))}
+              </p>
+              </div>
           </div>
-          <div className="benefits-item-3">
-            <img src={GearIcon} alt="" />
-            <h3 className="benefit-title">USING SMART CONTRACTS</h3>
-            <p className="benefit-text">
-                Smart contracts are programs in a blockchain that execute when predetermined conditions are met. They
-                automate transactions without intermediaries, reducing costs and increasing transparency.
-            </p>
-          </div>
-        </div>
       </section>
+
+
       <section className="Questioner">
         <h2 className="section-title">Frequently Asked Questions</h2>
         <div className="faq-container">
