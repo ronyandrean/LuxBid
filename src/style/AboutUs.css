@@ -285,4 +285,135 @@
     .about-title {
       font-size: 2rem;
     }
+
+        /* === SKILLS SECTION === */
+    .SoldPart {
+      display: flex;
+      flex-direction: row;
+      padding: 10rem;
+      gap: 10px;
+      justify-content: space-evenly;x
+    }
+
+    .Sold-Left {
+      border: 1px solid red;
+    }
+    .solds-container .sold {
+      margin-bottom: 1.5rem;
+    }
+    .sold span {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    .progress-bar {
+      background: #333;
+      border-radius: 5px;
+      overflow: hidden;
+      height: 10px;
+    }
+    .progress-fill {
+      height: 100%;
+      background: #ffffff;
+      width: 0;
+      transition: width 1s ease-in-out;
+    }
+    .sate {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+    .sate div {
+      flex: 1 1 20%;
+      margin: 1rem 0;
+    }
+    .sate strong {
+      font-size: 2rem;
+    }
+    .sate p {
+      color: #ccc;
+    }
+
+    /* === CALL TO ACTION === */
+    /* .CallToAction {
+      background: url('/path-to-image.jpg') center/cover no-repeat;
+      padding: 6rem 10%;
+      position: relative;
+    }
+
+    .cta-overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 4rem;
+      text-align: center;
+      color: white;
+    }
+
+    .cta-overlay h3 {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    .cta-overlay h2 {
+      font-size: 2.5rem;
+      margin: 1rem 0;
+    }
+
+    .cta-overlay button {
+      background-color: white;
+      color: black;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* === FOOTER === */
+    /* .Footer {
+      background-color: #111;
+      color: white;
+      padding: 4rem 10%;
+    }
+
+    .footer-columns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .footer-logo img {
+      width: 100px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-contact p {
+      margin: 0.3rem 0;
+      color: #ccc;
+    }
+
+    .footer-columns > div {
+      flex: 1 1 30%;
+      margin-bottom: 2rem;
+    }
+
+    .footer h4 {
+      margin-bottom: 1rem;
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 2rem;
+      color: #777;
+      font-size: 0.9rem;
+    } */
   }

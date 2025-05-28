@@ -6,7 +6,12 @@ import logo from '../assets/LXRe.png';
 import { Button } from '@/components/ui/button';
 import LandingPage from './LandingPage';
 
-const Navbar = () => {
+interface NavbarProps {
+  onHowItWorksClick: () => void;
+}
+
+const Navbar : React.FC<NavbarProps> = ({ onHowItWorksClick }) => {
+  
   return (
     <>
       <header className="header">
@@ -28,9 +33,9 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link className="nav-link" to="/">
+              <button onClick={onHowItWorksClick} className="nav-link-btn">
                 How it Works
-              </Link>
+              </button>
             </li>
             <li>
               <div className="button">
@@ -52,6 +57,8 @@ const Navbar = () => {
           </ul>
         </nav>
       </header>
+
+
     </>
   );
 };

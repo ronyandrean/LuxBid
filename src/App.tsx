@@ -44,6 +44,8 @@ function ProductPageWrapper() {
   );
 }
 
+// test
+
 const App = () => {
   const [view, setView] = useState<'list' | 'detail' | 'create'>('list');
   const [selectedProductId, setSelectedProductId] = useState<number | null>(
@@ -72,9 +74,10 @@ const App = () => {
           <Route path="/account" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/about" element={<AboutUs />} />
-          {/* <Route path="/collection/luxury" element={<CollectionLuxury />} />
+          <Route path="/collection/luxury" element={<CollectionLuxury />} />
           <Route path="/collection/Watches" element={<CollectionWatchesPage />} />
           <Route path="/collection/jewelry" element={<CollectionJewerlyPage />} />
+
           <Route path="/collection/fashion" element={<CollectionFashionPage />} /> */}
           <Route path="/product/:productId" element={<ProductPageWrapper />} />
           <Route path="/profile" element={<Profile />} />
@@ -98,6 +101,13 @@ const App = () => {
               />
             }
           />
+          <Route path="/collection/fashion" element={<CollectionFashionPage />} />
+          <Route path="/product" element={<ProductPage />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/history-bidding" element={<History />} />
+          <Route path="/history-selling" element={<HistorySelling />} />
+          <Route path="/selling-contact" element={<SellingContact />} />
+          <Route path="/selling-item" element={<SellingItem />} />
           <Route path="/testing" element={<TestingBackend />} />
         </Routes>
       </BrowserRouter>

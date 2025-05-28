@@ -12,8 +12,10 @@ import { CircleStop } from 'lucide-react';
 import AboutFooter from './Footer';
 import BidCard from './BidCard';
 import BidCard2 from './BidCard-2';
+
 import { Principal } from '@dfinity/principal';
 import { createActor, canisterId } from "../declarations/backend";
+import HowItWorksPopup from "../pages/PopupHowItWorks";
 
 const backend = createActor(canisterId);
 // Define types for the component props
@@ -37,6 +39,7 @@ interface Product {
 
 const LandingPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState('All');
+  const [showPopup, setShowPopup] = useState(false);
 
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -87,11 +90,14 @@ const LandingPage: React.FC = () => {
     return `${minutes}m remaining`;
   };
 
+  const handleHowItWorksClick = () => setShowPopup(true);
+  const handleClosePopup = () => setShowPopup(false);
   return (
     <>
       <div className="Landing-Content">
         <section className="Landing-content-1">
-          <Navbar />
+          <Navbar onHowItWorksClick={() => setShowPopup(true)} />
+          <HowItWorksPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
 
           <div className="animation-text-content">
             <p className="tagline">
