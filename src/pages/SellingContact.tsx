@@ -83,7 +83,7 @@ const SellingContact: React.FC<SellingContactProps> = ({
       );
       console.log('Seller creation result:', result);
 
-      if (result > 0n) {
+      if (result >= 0n) {
         onSuccess();
         navigate('/selling-item');
       } else {

@@ -122,7 +122,7 @@ const SellingItem: React.FC<SellingItemProps> = ({ onSuccess, onCancel }) => {
       );
       console.log('Seller creation result:', result);
 
-      if (result > 0n) {
+      if (result >= 0n) {
         onSuccess();
         navigate(`/product/${result.toString()}`);
       } else {
