@@ -44,6 +44,8 @@ function ProductPageWrapper() {
   );
 }
 
+// test
+
 const App = () => {
   const [view, setView] = useState<'list' | 'detail' | 'create'>('list');
   const [selectedProductId, setSelectedProductId] = useState<number | null>(
