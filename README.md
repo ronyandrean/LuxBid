@@ -54,7 +54,4 @@ npm start
 ## 🙌 Credits
 Made with 💙 using the Internet Computer and React.
 
-## 📜 License
-This project is licensed under the MIT License.
-
 
