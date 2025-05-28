@@ -1,54 +1,60 @@
-# Vite + React + Motoko
+# Luxbid — Decentralized Auction Platform
 
-### Get started directly in your browser:
+**Luxbid** is a decentralized auction platform for luxury goods, built on the **Internet Computer (ICP)** using **Motoko** for the backend and **React (TypeScript)** for the frontend. With Luxbid, users can list, browse, and bid on exclusive items in a secure and transparent environment—without relying on traditional intermediaries.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/rvanasa/vite-react-motoko)
+It aims to revolutionize how people trade high-value items online by ensuring full ownership, verified identity, and immutability via blockchain smart contracts.
 
-This template gives you everything you need to build a full-stack Web3 application on the [Internet Computer](https://internetcomputer.org/).
+---
 
-For an example of a real-world dapp built using this starter project, check out the [source code](https://github.com/dfinity/feedback) for DFINITY's [Developer Experience Feedback Board](https://dx.internetcomputer.org/).
+## 🔧 Tech Stack
 
-## 📦 Create a New Project
+- **Frontend:** React.js + TypeScript + Vite
+- **Backend:** Motoko (on the Internet Computer)
+- **Canister Deployment:** DFX
+- **Smart Contract Storage:** Persistent and immutable data on the IC
+- **Image Upload:** Base64 image conversion handled on frontend
 
-Make sure that [Node.js](https://nodejs.org/en/) `>= 16` and [`dfx`](https://internetcomputer.org/docs/current/developer-docs/build/install-upgrade-remove) `>= 0.14` are installed on your system.
+---
 
-Run the following commands in a new, empty project directory:
+## 🚀 Features
 
-```sh
-npx degit rvanasa/vite-react-motoko # Download this starter project
-dfx start --clean --background # Run dfx in the background
-npm run setup # Install packages, deploy canisters, and generate type bindings
+- 🔐 **Decentralized Seller Account** creation
+- 📸 **Secure Image Upload** with validation
+- 🛍️ **Create Auctions** with:
+  - Product name
+  - Description
+  - Starting price & fixed price
+  - Auction duration (1 hour, 1 day, 7 days)
+- 📦 **Store & Retrieve Auction Items** from Motoko backend
+- 📄 **Smart contract** logic for product listing
+- 🔄 **Live data rendering** on product page
 
-npm start # Start the development server
+---
+
+## 🧪 How to Run Locally
+
+### Clone and Install
+
+```bash
+git clone https://github.com/yourusername/luxbid.git
+cd luxbid
+npm install
 ```
 
-When ready, run `dfx deploy --network ic` to deploy your application to the Internet Computer.
+# Run the Backend
+```wsl
+dfx start --background
+dfx deploy
+```
+# Start 
+```wsl
+npm start
+```
 
-## 🛠️ Technology Stack
+## 🙌 Credits
+Made with 💙 using the Internet Computer and React.
 
-- [Vite](https://vitejs.dev/): high-performance tooling for front-end web development
-- [React](https://reactjs.org/): a component-based UI library
-- [TypeScript](https://www.typescriptlang.org/): JavaScript extended with syntax for types
-- [Sass](https://sass-lang.com/): an extended syntax for CSS stylesheets
-- [Prettier](https://prettier.io/): code formatting for a wide range of supported languages
-- [Motoko](https://github.com/dfinity/motoko#readme): a safe and simple programming language for the Internet Computer
-- [Mops](https://mops.one): an on-chain community package manager for Motoko
-- [mo-dev](https://github.com/dfinity/motoko-dev-server#readme): a live reload development server for Motoko
-- [@ic-reactor](https://github.com/B3Pay/ic-reactor): A suite of JavaScript libraries for seamless frontend development on the Internet Computer
+## 📜 License
+This project is licensed under the MIT License.
 
-## 📚 Documentation
 
-- [Vite developer docs](https://vitejs.dev/guide/)
-- [React quick start guide](https://react.dev/learn)
-- [Internet Computer docs](https://internetcomputer.org/docs/current/developer-docs/ic-overview)
-- [`dfx.json` reference schema](https://internetcomputer.org/docs/current/references/dfx-json-reference/)
-- [Motoko developer docs](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/)
-- [Mops usage instructions](https://j4mwm-bqaaa-aaaam-qajbq-cai.ic0.app/#/docs/install)
-- [@ic-reactor/react](https://b3pay.github.io/ic-reactor/modules/react.html)
-
-## 💡 Tips and Tricks
-
-- Customize your project's code style by editing the `.prettierrc` file and then running `npm run format`.
-- Reduce the latency of update calls by passing the `--emulator` flag to `dfx start`.
-- Install a Motoko package by running `npx ic-mops add <package-name>`. Here is a [list of available packages](https://mops.one/).
-- Split your frontend and backend console output by running `npm run frontend` and `npm run backend` in separate terminals.
