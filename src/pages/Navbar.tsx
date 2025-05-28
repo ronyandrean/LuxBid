@@ -18,8 +18,8 @@ const Navbar = () => {
           </div>
           <ul className="nav-links">
             <li>
-              <Link className="nav-link" to="/">
-                Colletions
+              <Link className="nav-link" to="/collection/luxury">
+                Collections
               </Link>
             </li>
             <li>
