@@ -55,6 +55,15 @@
   text-decoration: none
 }
 
+.nav-link-btn {
+  border: none;
+  background:none;
+  color: rgba(255, 255, 255, .8);
+  font-size: 14px;
+  font-family: "Quicksand", sans-serif;
+  cursor: pointer;
+}
+
 .nav-wallet {
   font-weight: bold;
   color: #008564;
