@@ -164,3 +164,32 @@
     transition: 0.4s ease;
 }
 
+.btn-cancel {
+    background-color: gray;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px 20px;
+    font-family: "Public Sans", sans-serif;
+    margin-left: 10px;
+}
+
+.btn-cancel:hover {
+    background-color: white;
+    color: black;
+    transition: 0.4s ease;
+}
+
+.btn-submit {
+    background-color: #31996B;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px 20px;
+    font-family: "Public Sans", sans-serif;
+    margin-left: 10px;
+}   
+
+.btn-submit:hover {
+    background-color: white;
+    color: #31996B;
+    transition: 0.4s ease;
+}

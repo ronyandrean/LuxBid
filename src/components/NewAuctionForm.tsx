@@ -1,5 +1,6 @@
 // src/components/NewAuctionForm.tsx
 import React, { useState, ChangeEvent, FormEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 // import { backend } from '../declarations/backend';
 import { createActor, canisterId } from '../declarations/backend';
 
@@ -43,6 +44,9 @@ const NewAuctionForm: React.FC<NewAuctionFormProps> = ({
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
   const [imagePreview, setImagePreview] = useState<string>('');
+
+  const navigate = useNavigate();
+
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
@@ -123,10 +127,6 @@ const NewAuctionForm: React.FC<NewAuctionFormProps> = ({
       const deadline = now + Number(durationNanos);
 
       await backend.addProduct(
-        formData.firstName,
-        formData.lastName,
-        formData.email,
-        formData.phone,
         formData.productName,
         BigInt(Number(formData.startPrice)),
         BigInt(Number(formData.fixPrice)),

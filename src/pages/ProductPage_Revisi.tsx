@@ -42,145 +42,147 @@ import BidCard from './BidCard';
 import BidCard2 from './BidCard-2';
 import AboutFooter from './Footer';
 import { Principal } from '@dfinity/principal';
+import { createActor, canisterId } from '../declarations/backend';
 
+const backend = createActor(canisterId);
 
-const ProductPage: React.FC = () => {
+interface ProductPageProps {
+  productId: number;
+  onBack: () => void;
+}
+
+// Define types for the bid object
+interface Bid {
+  bidder: Principal;
+  amount: bigint;
+  timestamp: bigint;
+}
+
+// Define types for the product
+interface Product {
+  id: number;
+  productName: string;
+  startPrice: bigint;
+  fixPrice: bigint;
+  deadline: bigint;
+  description: string;
+  image: string;
+  history: Bid[];
+  highestBid: bigint;
+  highestBidder: Principal;
+}
+
+const ProductPage: React.FC<ProductPageProps> = ({ productId, onBack }) => {
   /* ── STATE ─────────────────────────────────────────── */
-  const [bidAmount, setBidAmount] = useState<number>(18.6);
-  const [isPlacingBid, setIsPlacingBid] = useState(false);
-  const [bidPlaced, setBidPlaced] = useState(false);
+  const [product, setProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [bidAmount, setBidAmount] = useState<string>('');
+  const [bidStatus, setBidStatus] = useState<string>('');
+  const [bidding, setBidding] = useState<boolean>(false);
+  // const [bidAmount, setBidAmount] = useState<number>(18.6);
+  // const [isPlacingBid, setIsPlacingBid] = useState(false);
+  // const [bidPlaced, setBidPlaced] = useState(false);
 
-  const [bidHistory, setBidHistory] = useState<
-    {
-      id: number;
-      user: string;
-      amount: number;
-      time: string;
-      verified: boolean;
-    }[]
-  >([
-    { id: 1, user: 'Alex M.', amount: 18.5, time: '2 h ago', verified: true },
-    {
-      id: 2,
-      user: 'Sarah K.',
-      amount: 18.2,
-      time: '5 h ago',
-      verified: true,
-    },
-    {
-      id: 3,
-      user: 'Michael R.',
-      amount: 17.8,
-      time: '8 h ago',
-      verified: true,
-    },
-    {
-      id: 4,
-      user: 'Jessica T.',
-      amount: 17.5,
-      time: '10 h ago',
-      verified: true,
-    },
-    {
-      id: 5,
-      user: 'David L.',
-      amount: 17.0,
-      time: '12 h ago',
-      verified: true,
-    },
-    {
-      id: 6,
-      user: 'Emma W.',
-      amount: 16.5,
-      time: '15 h ago',
-      verified: true,
-    },
-  ]);
-
-  const [countdown, setCountdown] = useState({
-    hours: 2,
-    minutes: 15,
-    seconds: 30,
-  });
-  const progressTarget = 75;
-  const [progress, setProgress] = useState(0);
-
-  const relatedItems = [
-    {
-      id: 1,
-      title: 'Jordan 1 Travis Scott',
-      currentBid: 10.0,
-      image: Jordanshoes,
-    },
-    {
-      id: 2,
-      title: 'Jordan 1 Travis Scott',
-      currentBid: 20.0,
-      image: Jordanshoes,
-    },
-    {
-      id: 3,
-      title: 'Jordan 1 Travis Scott',
-      currentBid: 30.0,
-      image: Jordanshoes,
-    },
-  ];
-
-  /* ── EFFECTS ────────────────────────────────────────── */
-  /* animate progress bar once page loads */
   useEffect(() => {
-    const id = setTimeout(() => setProgress(progressTarget), 400);
-    return () => clearTimeout(id);
-  }, []);
+    fetchProductDetails();
+  }, [productId]);
 
-  /* ticking countdown */
-  useEffect(() => {
-    const id = setInterval(() => {
-      setCountdown((prev) => {
-        if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 };
-        if (prev.minutes > 0)
-          return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
-        if (prev.hours > 0)
-          return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
-        clearInterval(id);
-        return prev;
-      });
-    }, 1000);
-    return () => clearInterval(id);
-  }, []);
-
-  /* ── HELPERS ────────────────────────────────────────── */
-  const formatCountdown = () => {
-    const { hours, minutes, seconds } = countdown;
-    return [hours, minutes, seconds]
-      .map((n) => n.toString().padStart(2, '0'))
-      .join(':');
+  const fetchProductDetails = async (): Promise<void> => {
+    setLoading(true);
+    try {
+      const result = await backend.getProductById(BigInt(productId));
+      if ('length' in result && result.length > 0) {
+        const backendProduct = result[0];
+        if (backendProduct) {
+          const mappedProduct: Product = {
+            id: Number(backendProduct.id),
+            productName: backendProduct.productName,
+            startPrice: backendProduct.startPrice,
+            fixPrice: backendProduct.fixPrice,
+            deadline: backendProduct.deadline,
+            description: backendProduct.description,
+            image: backendProduct.image,
+            history: backendProduct.history,
+            highestBid: backendProduct.highestBid,
+            highestBidder: backendProduct.highestBidder,
+          };
+          setProduct(mappedProduct);
+          setBidAmount((Number(mappedProduct.highestBid) + 1).toString());
+        } else {
+          setProduct(null);
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching product details:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleBidSubmit = () => {
-    setIsPlacingBid(true);
-    setTimeout(() => {
-      /* add new bid */
-      const newBid = {
-        id: bidHistory.length + 1,
-        user: 'You',
-        amount: bidAmount,
-        time: 'just now',
-        verified: true,
-      };
-      setBidHistory([newBid, ...bidHistory]);
-      setBidPlaced(true);
-      setIsPlacingBid(false);
-    }, 1500);
+  const handleBid = async (): Promise<void> => {
+    if (!bidAmount || isNaN(Number(bidAmount))) {
+      setBidStatus('Please enter a valid bid amount');
+      return;
+    }
+
+    setBidding(true);
+    setBidStatus('');
+
+    try {
+      // Place bid with required arguments only
+      const result = await backend.placeBid(
+        BigInt(productId),
+        BigInt(Number(bidAmount)),
+      );
+      setBidStatus(result);
+      if (
+        typeof result === 'string' &&
+        (result.includes('success') || result.includes('Congratulations'))
+      ) {
+        fetchProductDetails(); // Refresh product details after successful bid
+      }
+    } catch (error) {
+      console.error('Error placing bid:', error);
+      setBidStatus('Error placing bid. Please try again.');
+    } finally {
+      setBidding(false);
+    }
   };
 
-  /* ── RENDER ─────────────────────────────────────────── */
+  // Helper function to format time
+  const formatTime = (timestamp: bigint): string => {
+    return new Date(Number(timestamp) / 1000000).toLocaleString();
+  };
+
+  if (loading) {
+    return (
+      <div className="text-center py-10">
+        <p>Loading auction details...</p>
+      </div>
+    );
+  }
+
+  if (!product) {
+    return (
+      <div className="checking-auction">
+        <p>Auction not found</p>
+        <button
+          onClick={onBack}
+          className="btn btn--primary"
+        >
+          Back to Auctions
+        </button>
+      </div>
+    );
+  }
+
+  const isActive = product.deadline > BigInt(Date.now() * 1000000);
+
   return (
     <div className="product-page">
       <div className="page">
         <Navbar />
 
-        {/* ░░ Breadcrumb ░░ */}
         <div className="breadcrumb">
           <div className="container-breadcrumb">
             <a href="#">Home</a>
@@ -229,78 +231,86 @@ const ProductPage: React.FC = () => {
           </div>
         </div>
 
-        {/* ░░ Main ░░ */}
         <main className="main container">
           <section className="grid-two">
-            {/* ① GALLERY */}
             <div className="gallery">
-              <figure className="hero">
-                <img
-                  src={Jordanshoes}
-                  alt="Jordan 1 Low Travis Scott x Fragment"
-                />
-              </figure>
+              <div>
+                {product.image ? (
+                  <img
+                    src={product.image}
+                    alt={product.productName}
+                    className="w-full h-auto rounded-lg"
+                    onError={(
+                      e: React.SyntheticEvent<HTMLImageElement, Event>,
+                    ) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = 'https://via.placeholder.com/400x300?text=No+Image';
+                    }}
+                  />
+                ) : (
+                  <div className="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
+                    <p className="text-gray-500">No image available</p>
+                  </div>
+                )}
+              </div>
 
               <div className="thumb-row">
-                {/* thumbs */}
                 <img
-                  src={Jordanshoes}
-                  alt="Jordan 1 Low Travis Scott x Fragment"
+                  src={product.image}
+                  alt={product.productName}
                 />
                 <img
-                  src={Jordanshoes}
-                  alt="Jordan 1 Low Travis Scott x Fragment"
+                  src={product.image}
+                  alt={product.productName}
                 />
                 <img
-                  src={Jordanshoes}
-                  alt="Jordan 1 Low Travis Scott x Fragment"
+                  src={product.image}
+                  alt={product.productName}
                 />
                 <div className="thumb-video">
                   <img
-                    src={Jordanshoes}
-                    alt="Jordan 1 Low Travis Scott x Fragment"
+                    src={product.image}
+                    alt={product.productName}
                   />
                 </div>
               </div>
             </div>
 
-            {/* ② AUCTION CARD */}
             <article className="auction">
               <div className="auction-head">
                 <Badge className="badge badge--live">Live Auction</Badge>
               </div>
 
-              <h2 className="auction-title">
-                Jordan 1 Low Travis Scott x Fragment
-              </h2>
-              <p className="lead">
-                Limited edition timepiece with exquisite craftsmanship
-              </p>
+              <h2 className="auction-title">{product.productName}</h2>
+              <p className="lead">{product.description}</p>
 
-              {/* price card */}
               <div className="price-card">
                 <div className="price-header">
                   <div className="price-left">
                     <small>Current Bid</small>
                     <br></br>
                     <div className="price-eth">
-                      <span>18.5 ICP</span>
+                      <span>{product.highestBid.toString()} ICP</span>
                     </div>
                     <small className="price-usd">≈ $42,550 USD</small>
                   </div>
                   <div className="price-right">
                     <small>Auction Ends In</small>
                     <br></br>
-                    <span className="countdown">{formatCountdown()}</span>
+                    <span
+                      className={isActive ? 'text-green-600' : 'text-red-600'}
+                    >
+                      {formatTime(product.deadline)}
+                      {isActive ? ' (Active)' : ' (Ended)'}
+                    </span>
                     <br></br>
-                    <small>24 May 2025 at 20:30 UTC</small>
                   </div>
                 </div>
 
                 <Progress value={75} className="progress-bar" />
                 <div className="price-meta">
-                  <span>Starting Bid: 10.0 ICP</span>
-                  <span>Fixed Price: 30.0 ICP</span>
+                  <span>Starting Bid: {product.startPrice.toString()} ICP</span>
+                  <span>Fixed Price: {product.fixPrice.toString()} ICP</span>
                 </div>
 
                 <div className="bid-amount">
@@ -310,27 +320,35 @@ const ProductPage: React.FC = () => {
                       className="number-input"
                       type="number"
                       value={bidAmount}
-                      onChange={(e) => setBidAmount(parseFloat(e.target.value))}
-                      min={18.6}
-                      step={0.1}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        setBidAmount(e.target.value)
+                      }
+                      min={Number(product.highestBid) + 1}
+                      placeholder="Enter bid amount"
+                      // step={0.1}
                     />
 
                     <Button
                       variant="outline"
                       className="btn btn--primary"
-                      onClick={() => setBidAmount(18.6)}
+                      onClick={() => setBidAmount((Number(product.highestBid) + 1).toString())}
+                      disabled={bidding}
                     >
                       Min
                     </Button>
                   </div>
 
-                  {bidPlaced && (
-                    <p className="alert-success">✓ Bid placed successfully!</p>
+                  {bidStatus && (
+                    <p
+                      className={`alert-success ${bidStatus.includes('success') || bidStatus.includes('Congratulations') ? 'text-green-600' : 'text-red-600'}`}
+                    >
+                      {bidStatus}
+                    </p>
                   )}
 
                   <div className="min-max">
-                    <span>Min: 18.6 ETH</span>
-                    <span>Max: 30.0 ETH</span>
+                    <span>Min: {product.highestBid.toString()} ICP</span>
+                    <span>Max: {product.fixPrice.toString()} ICP</span>
                   </div>
                 </div>
 
@@ -345,15 +363,15 @@ const ProductPage: React.FC = () => {
                       <DialogTitle>Confirm Your Bid</DialogTitle>
                       <DialogDescription className="text-white/70">
                         You are about to place a bid of {bidAmount} ICP (≈ $
-                        {(bidAmount * 2300).toLocaleString()} USD) for Jordan 1
-                        Low Travis Scott.
+                        {(Number(bidAmount) * 2300).toLocaleString()} USD) for{' '}
+                        {product.productName}.
                       </DialogDescription>
                     </DialogHeader>
                     <div className="space-y-4 py-4">
                       <div className="flex justify-between">
                         <span className="text-white/70">Item:</span>
                         <span className="font-medium">
-                          Jordan 1 Low Travis Scott
+                          {product.productName}
                         </span>
                       </div>
                       <div className="flex justify-between">
@@ -365,24 +383,24 @@ const ProductPage: React.FC = () => {
                           Service fee (2.5%):
                         </span>
                         <span className="font-medium">
-                          {(bidAmount * 0.025).toFixed(4)} ICP
+                          {(Number(bidAmount) * 0.025).toFixed(4)} ICP
                         </span>
                       </div>
                       <Separator className="my-2 bg-white/10" />
                       <div className="flex justify-between">
                         <span className="text-white/70">Total:</span>
                         <span className="font-bold">
-                          {(bidAmount * 1.025).toFixed(4)} ICP
+                          {(Number(bidAmount) * 1.025).toFixed(4)} ICP
                         </span>
                       </div>
                     </div>
                     <DialogFooter>
                       <Button
                         className="bg-emerald-500 hover:bg-emerald-600 !rounded-button whitespace-nowrap cursor-pointer w-full"
-                        onClick={handleBidSubmit}
-                        disabled={isPlacingBid}
+                        onClick={handleBid}
+                        disabled={bidding}
                       >
-                        {isPlacingBid ? (
+                        {bidding ? (
                           <>
                             <i className="fas fa-spinner fa-spin mr-2"></i>
                             Processing...
@@ -395,7 +413,7 @@ const ProductPage: React.FC = () => {
                   </DialogContent>
                 </Dialog>
 
-                {bidPlaced && (
+                {bidStatus && (
                   <Alert className="bg-emerald-500/20 border-emerald-500 text-white">
                     <i className="fas fa-check-circle text-emerald-400 mr-4"></i>
                     <div className="success-message">
@@ -409,7 +427,6 @@ const ProductPage: React.FC = () => {
                 )}
               </div>
 
-              {/* seller */}
               <div className="seller-card">
                 <div className="seller-info">
                   <div className="avatar">RA</div>
@@ -454,22 +471,22 @@ const ProductPage: React.FC = () => {
                   </h3>
                   <div className="detail-item">
                     <strong>Brand: </strong>
-                    <span>Vintage Chronograph</span>
+                    <span>Nike</span>
                   </div>
                   <Separator className="separator" />
                   <div className="detail-item">
                     <strong>Model: </strong>
-                    <span>Chrono Classic</span>
+                    <span>Jordan 1</span>
                   </div>
                   <Separator className="separator" />
                   <div className="detail-item">
                     <strong>Year: </strong>
-                    <span>1975</span>
+                    <span>2023</span>
                   </div>
                   <Separator className="separator" />
                   <div className="detail-item">
                     <strong>Material: </strong>
-                    <span>Stainless Steel</span>
+                    <span>Leather</span>
                   </div>
                   <Separator className="separator" />
                   <div className="detail-item">
@@ -483,61 +500,49 @@ const ProductPage: React.FC = () => {
                 <h3 className="section-heading-details">Description</h3>
                 <div className="item-description">
                   <p>
-                    {' '}
-                    This item has been thoroughly examined by our team of watch
-                    experts and certified as authentic. The serial numbers have
-                    been verified against manufacturer records, and all
-                    components have been confirmed as original or period-correct
-                    replacements. This item has been thoroughly examined by our
-                    team of watch experts and certified as authentic. The serial
-                    numbers have been verified against manufacturer records, and
-                    all components have been confirmed as original or
-                    period-correct replacements. This item has been thoroughly
-                    examined by our team of watch experts and certified as
-                    authentic. The serial numbers have been verified against
-                    manufacturer records, and all components have been confirmed
-                    as original or period-correct replacements.
+                    {product.description}
                   </p>
                 </div>
               </TabsContent>
               <TabsContent value="history" className="tabs-content">
                 <h3 className="section-heading-details">Bid History</h3>
-                <div className="bid-history-container">
-                  <table className="bid-history-table">
-                    <thead>
-                      <tr>
-                        <th>User</th>
-                        <th>Bid Amount</th>
-                        <th>Time</th>
-                        <th>Verified</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <div className="user-info">
-                            <div className="bid-user-avatar">R</div>
-                            <span className="bid-user-name">Rony Andrean</span>
-                          </div>
-                        </td>
-                        <td>
-                          <strong>0.42 ICP</strong>
-                        </td>
-                        <td className="bid-time">5 mins ago</td>
-                        <td>
-                          <span className="status-badge status-completed">
-                            Completed
-                          </span>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+                {product.history && product.history.length > 0 ? (
+                  <div className="bid-history-container">
+                    <table className="bid-history-table">
+                      <thead>
+                        <tr>
+                          <th>User</th>
+                          <th>Bid Amount</th>
+                          <th>Time</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {product.history.map((bid, index) => (
+                          <tr
+                            key={index}
+                            className={index % 2 === 0 ? 'bg-gray-10' : ''}
+                          >
+                            <td className="py-2 px-4 border-b">
+                              {bid.bidder.toString().substring(0, 10)}...
+                            </td>
+                            <td className="py-2 px-4 border-b">
+                              {bid.amount.toString()} ICP
+                            </td>
+                            <td className="py-2 px-4 border-b">
+                              {formatTime(bid.timestamp)}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                ) : (
+                  <p className="text-gray-500">No bids yet</p>
+                )}
               </TabsContent>
             </Tabs>
           </section>
 
-          {/* ░░ RELATED ░░ */}
           <div className="related-items">
             <h3 className="section-heading">You May Also Like</h3>
             <div className="related">
@@ -548,7 +553,6 @@ const ProductPage: React.FC = () => {
           </div>
         </main>
 
-        {/* ░░ FOOTER ░░ */}
         <AboutFooter />
       </div>
     </div>

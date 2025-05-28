@@ -12,10 +12,6 @@ actor {
   // Type definitions
   public type Product = {
     id : Nat;
-    firstName : Text;
-    lastName : Text;
-    email : Text;
-    phone : Text;
     productName : Text;
     startPrice : Nat;
     fixPrice : Nat;
@@ -33,30 +29,40 @@ actor {
     timestamp : Time.Time;
   };
 
+  public type Seller = {
+    id : Nat;
+    firstName : Text;
+    lastName : Text;
+    email : Text;
+    phone : Text;
+  };
+
   // State variables
   stable var nextId : Nat = 0;
   stable var products : List.List<Product> = List.nil<Product>();
+  stable var nextSellerId : Nat = 0;
+  stable var sellers : List.List<Seller> = List.nil<Seller>();
 
   // Helper functions
   func findProduct(productId : Nat) : ?Product {
-    List.find<Product>(products, func(p) { p.id == productId })
+    List.find<Product>(products, func(p) { p.id == productId });
+  };
+
+  func findSeller(sellerId : Nat) : ?Seller {
+    List.find<Seller>(sellers, func(s) { s.id == sellerId });
   };
 
   func updateProduct(updatedProduct : Product) : () {
     products := List.map<Product, Product>(
       products,
       func(p) {
-        if (p.id == updatedProduct.id) updatedProduct else p
-      }
+        if (p.id == updatedProduct.id) updatedProduct else p;
+      },
     );
   };
 
   // Seller System
-  public shared(msg) func addProduct(
-    firstName : Text,
-    lastName : Text,
-    email : Text,
-    phone : Text,
+  public shared (msg) func addProduct(
     productName : Text,
     startPrice : Nat,
     fixPrice : Nat,
@@ -65,7 +71,7 @@ actor {
     image : Text,
   ) : async Nat {
     let caller = msg.caller;
-    
+
     // if (Principal.isAnonymous(caller)) {
     //   Debug.trap("Anonymous users cannot create auctions");
     // };
@@ -84,10 +90,6 @@ actor {
 
     let product : Product = {
       id = nextId;
-      firstName = firstName;
-      lastName = lastName;
-      email = email;
-      phone = phone;
       productName = productName;
       startPrice = startPrice;
       fixPrice = fixPrice;
@@ -104,13 +106,38 @@ actor {
     return product.id;
   };
 
+  public shared (msg) func addSeller(
+    firstName : Text,
+    lastName : Text,
+    email : Text,
+    phone : Text,
+  ) : async Nat {
+    let caller = msg.caller;
+
+    // if (Principal.isAnonymous(caller)) {
+    //   Debug.trap("Anonymous users cannot create auctions");
+    // };
+
+    let seller : Seller = {
+      id = nextSellerId;
+      firstName = firstName;
+      lastName = lastName;
+      email = email;
+      phone = phone;
+    };
+
+    sellers := List.push(seller, sellers);
+    nextSellerId += 1;
+    return seller.id;
+  };
+
   // Product Management Check Products at Luxbidd!!
   public query func getAllProducts() : async [Product] {
     return List.toArray(products);
   };
 
   public query func getProductById(pid : Nat) : async ?Product {
-    findProduct(pid)
+    findProduct(pid);
   };
 
   // Check products that are still active auction, Filteringg!!
@@ -135,42 +162,38 @@ actor {
     // };
 
     let now = Time.now();
-    
+
     // Find the product
     switch (findProduct(productId)) {
       case (null) {
         return "Product not found.";
       };
-      
+
       case (?product) {
         // Check if auction is still active
         if (product.deadline < now) {
           return "Auction has ended.";
         };
-        
+
         // Check if bid is high enough
         if (amount <= product.highestBid) {
           return "Bid too low. Current highest bid is " # Nat.toText(product.highestBid) # ".";
         };
-        
+
         // Create new bid record (List to History)
         let newBid : Bid = {
           bidder = caller;
           amount = amount;
           timestamp = now;
         };
-        
+
         // Create updated product ( Updating product for checking!)
         let newHistory = Array.append<Bid>(product.history, [newBid]);
-        
+
         // Check if fixed price is met THEN END THE AUCTION!!
         if (amount >= product.fixPrice) {
           let updatedProduct : Product = {
             id = product.id;
-            firstName = product.firstName;
-            lastName = product.lastName;
-            email = product.email;
-            phone = product.phone;
             productName = product.productName;
             startPrice = product.startPrice;
             fixPrice = product.fixPrice;
@@ -181,7 +204,7 @@ actor {
             highestBid = amount;
             highestBidder = caller;
           };
-          
+
           updateProduct(updatedProduct);
           return "Congratulations! You've met the fixed price and won the auction.";
         } else {
@@ -189,10 +212,6 @@ actor {
           // Regular bid (Bid when not met the fixed price!!)
           let updatedProduct : Product = {
             id = product.id;
-            firstName = product.firstName;
-            lastName = product.lastName;
-            email = product.email;
-            phone = product.phone;
             productName = product.productName;
             startPrice = product.startPrice;
             fixPrice = product.fixPrice;
@@ -203,7 +222,7 @@ actor {
             highestBid = amount;
             highestBidder = caller;
           };
-          
+
           updateProduct(updatedProduct);
           return "Bid placed successfully! You are now the highest bidder.";
         };
@@ -211,27 +230,23 @@ actor {
     };
   };
 
-  public shared(msg) func finalizeAuction(productId : Nat) : async Text {
+  public shared (msg) func finalizeAuction(productId : Nat) : async Text {
     let caller = msg.caller;
     let now = Time.now();
-    
+
     switch (findProduct(productId)) {
       case (null) {
         return "Product not found.";
       };
-      
+
       case (?product) {
         // Only allow the product creator or admin to finalize
         if (product.deadline <= now) {
           return "Auction has already ended.";
         };
-        
+
         let updatedProduct : Product = {
           id = product.id;
-          firstName = product.firstName;
-          lastName = product.lastName;
-          email = product.email;
-          phone = product.phone;
           productName = product.productName;
           startPrice = product.startPrice;
           fixPrice = product.fixPrice;
@@ -242,7 +257,7 @@ actor {
           highestBid = product.highestBid;
           highestBidder = product.highestBidder;
         };
-        
+
         updateProduct(updatedProduct);
         return "Auction finalized successfully!";
       };
@@ -256,7 +271,7 @@ actor {
       case (?product) { ?product.history };
     };
   };
-  
+
   // End the auctionn!!
   public query func getCompletedAuctions() : async [Product] {
     let now = Time.now();
@@ -269,29 +284,29 @@ actor {
       )
     );
   };
-  
+
   // Get auctions by highest bid for Filtering!!
   public query func getAuctionsByHighestBid() : async [Product] {
     let productArray = List.toArray(products);
     Array.sort(
-      productArray, 
+      productArray,
       func(a : Product, b : Product) : { #less; #equal; #greater } {
-        if (a.highestBid > b.highestBid) { #less }
-        else if (a.highestBid < b.highestBid) { #greater }
-        else { #equal }
-      }
-    )
+        if (a.highestBid > b.highestBid) { #less } else if (a.highestBid < b.highestBid) {
+          #greater;
+        } else { #equal };
+      },
+    );
   };
-  
+
   // Check if user is highest bidder
-  public shared(msg) func isHighestBidder(productId : Nat) : async Bool {
+  public shared (msg) func isHighestBidder(productId : Nat) : async Bool {
     let caller = msg.caller;
-    
+
     switch (findProduct(productId)) {
       case (null) { false };
       case (?product) {
-        Principal.equal(product.highestBidder, caller)
+        Principal.equal(product.highestBidder, caller);
       };
     };
   };
-}
+};

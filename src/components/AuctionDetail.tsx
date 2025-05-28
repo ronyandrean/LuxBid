@@ -21,10 +21,6 @@ interface Bid {
 // Define types for the product
 interface Product {
   id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
   productName: string;
   startPrice: bigint;
   fixPrice: bigint;
@@ -56,10 +52,6 @@ const AuctionDetail: React.FC<AuctionDetailProps> = ({ productId, onBack }) => {
         if (backendProduct) {
           const mappedProduct: Product = {
             id: Number(backendProduct.id),
-            firstName: backendProduct.firstName,
-            lastName: backendProduct.lastName,
-            email: backendProduct.email,
-            phone: backendProduct.phone,
             productName: backendProduct.productName,
             startPrice: backendProduct.startPrice,
             fixPrice: backendProduct.fixPrice,
@@ -170,7 +162,7 @@ const AuctionDetail: React.FC<AuctionDetailProps> = ({ productId, onBack }) => {
           
           <div className="mb-4">
             <p className="text-sm text-gray-500">Seller</p>
-            <p>{product.firstName} {product.lastName}</p>
+            {/* <p>{product.firstName} {product.lastName}</p> */}
           </div>
           
           <div className="mb-4">
