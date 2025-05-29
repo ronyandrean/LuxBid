@@ -6,23 +6,23 @@ import AboutFooter from "@/pages/Footer";
 import Navbar from "./Navbar";
 import MiddleImage from '../assets/chanel.png'
 import logo from '../assets/LXRe.png'
-import HowItWorksPopup from "../pages/PopupHowItWorks";
-
 
 const AboutUs = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const [showPopup, setShowPopup] = useState(false);
-
   const [widthBars, setWidthBars] = useState(false);
 
   useEffect(() => {
+    console.log("WIDTH BARS : ", widthBars);
+    
     setTimeout(() => {
       setWidthBars(true);
-    }, 500)
-  })
+      console.log("WIDTH BARS UPDATED : ", widthBars);
+      
+    }, 100)
+  }, [widthBars])
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -32,8 +32,6 @@ const AboutUs = () => {
     }
     document.addEventListener("mousedown", handleClickOutside);
 
-    const handleHowItWorksClick = () => setShowPopup(true);
-    const handleClosePopup = () => setShowPopup(false);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -79,8 +77,7 @@ const AboutUs = () => {
     <div className="About-Wrapper">  
       <div className="About-Content">
       <div className="Header-Collection">
-        <Navbar onHowItWorksClick={() => setShowPopup(true)} />
-        <HowItWorksPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
+        <Navbar />
       <div className="About-Image">
         {/* <img src={AboutBackground} alt="" /> */}
         {/* <h1 className="about-title">About</h1> */}
@@ -227,7 +224,7 @@ const AboutUs = () => {
             <div className="bar">
               <span>Originality</span>
               <div className="progress-bar">
-                <div className="progress-fill" style={{ width: widthBars ? "100%" : "0%" }}></div>
+                <div className="progress-fill" style={{ width: true  ? "100%" : "0%" }}></div>
               </div>
             </div>
             
