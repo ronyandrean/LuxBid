@@ -49,3 +49,60 @@
   font-size: 14px;
   margin-top: 6px;
 }
+
+@media screen and (max-width: 1024px) {
+  .stats-card {
+    padding: 20px 32px;
+    width: 90%;
+  }
+
+  .stat-item h2 {
+    font-size: 32px;
+  }
+
+  .stat-item p {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .stats-card {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 20px;
+  }
+
+  .stat-item {
+    width: 100%;
+  }
+
+  .stat-item h2 {
+    font-size: 28px;
+  }
+
+  .stat-item p {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .stats-container {
+    margin-top: 16px;
+    margin-bottom: -16px;
+  }
+
+  .stats-card {
+    width: 95%;
+    padding: 16px;
+  }
+
+  .stat-item h2 {
+    font-size: 24px;
+  }
+
+  .stat-item p {
+    font-size: 11px;
+  }
+}
+

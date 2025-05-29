@@ -1,8 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand');
-@import url('https://fonts.googleapis.com/css2?family=Gloock');
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Public+Sans:wght@100;600&family=PT+Serif:ital,wght@0,400;0,700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Gloock:wght@400;700&family=Quicksand:wght@400;500&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Gloock:wght@400;700&family=Inter:wght@400;600;700&family=Public+Sans:wght@100;600&family=PT+Serif:ital,wght@0,400;0,700&family=Quicksand:wght@400;500&display=swap");
+
 
 @keyframes fadeInPage {
   to {
@@ -33,6 +30,13 @@
   margin-left: 5rem;
 }
 
+@media (max-width: 768px) {
+  .animation-text-content {
+    width: 100%;
+    margin-left: 0;
+    padding: 2rem;
+  }
+}
 
 
 .tagline {
@@ -115,8 +119,6 @@
   color: white;
   padding: 0.5rem 2rem;
   border-radius: 8px;
-  display: inline-flex;  
-  align-items: center;
   gap: 10px;
   cursor:pointer;
 }
@@ -144,7 +146,7 @@
 
 .button-2:hover {
   opacity: 0.8;
-  background-color: FFFFFF;
+  background-color: #FFFFFF;
   color: black;
   transition: 0.5s ease;
 }
@@ -218,9 +220,10 @@
 
 .Security, .AI, .NFT {
   font-size: 20px;
-  font-size: 'Public Sans', serif;
+  font-family: 'Public Sans', sans-serif;
   font-weight: bold;
 }
+
 .Landing-Content-3 {
   padding: 40px 60px;
   background-color: #000;
@@ -343,4 +346,91 @@
     color: white;
     transition: 0.5s ease;
     cursor: pointer;
+}
+
+/* Responsif untuk layar dengan lebar maksimum 768px (tablet dan perangkat lebih kecil) */
+@media screen and (max-width: 768px) {
+  .animation-text-content {
+    width: 100%;
+    margin-left: 0;
+    padding: 2rem;
+  }
+
+  .blockchain-tagline {
+    font-size: 2rem;
+  }
+
+  .text-polos-1 {
+    padding-right: 0;
+    font-size: 13px;
+  }
+
+  .tagline-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .Content-2-Box-Content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .Content-2-Box-1,
+  .Content-2-Box-2,
+  .Content-2-Box-3 {
+    width: 100%;
+  }
+
+  .Top-Content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .tab-wrapper {
+    flex-wrap: wrap;
+  }
+
+  .BidCard-Wrapper {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .Landing-content-4 {
+    padding: 2rem;
+  }
+
+  .Content-4-text-1 {
+    font-size: 24px;
+  }
+
+  .Content-4-Text-2 {
+    font-size: 13px;
+  }
+}
+
+/* Responsif untuk layar dengan lebar maksimum 480px (smartphone) */
+@media screen and (max-width: 480px) {
+  .blockchain-tagline {
+    font-size: 1.5rem;
+  }
+
+  .text-polos-1 {
+    font-size: 12px;
+  }
+
+  .Content-4-text-1 {
+    font-size: 20px;
+  }
+
+  .Content-4-Text-2 {
+    font-size: 12px;
+  }
+
+  .button-1,
+  .button-2,
+  .Content-4-btn {
+    padding: 0.5rem 1.5rem;
+    font-size: 14px;
+  }
 }
