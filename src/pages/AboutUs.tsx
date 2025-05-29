@@ -2,13 +2,11 @@ import React from "react";
 import { useState, useEffect, useRef} from "react"
 import "../style/AboutUs.css"
 import { ChevronDown } from "lucide-react"
-import AboutBackground from '../assets/background-landing-baru.jpg'
-import { Link } from "react-router-dom";
-import GearIcon from '../assets/gearicon.png'
 import AboutFooter from "@/pages/Footer";
 import Navbar from "./Navbar";
 import MiddleImage from '../assets/chanel.png'
 import logo from '../assets/LXRe.png'
+import HowItWorksPopup from "../pages/PopupHowItWorks";
 
 
 const AboutUs = () => {
@@ -16,14 +14,26 @@ const AboutUs = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  const [showPopup, setShowPopup] = useState(false);
+
+  const [widthBars, setWidthBars] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setWidthBars(true);
+    }, 500)
+  })
+
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsDropdownOpen(false);
       }
     }
-
     document.addEventListener("mousedown", handleClickOutside);
+
+    const handleHowItWorksClick = () => setShowPopup(true);
+    const handleClosePopup = () => setShowPopup(false);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -69,7 +79,8 @@ const AboutUs = () => {
     <div className="About-Wrapper">  
       <div className="About-Content">
       <div className="Header-Collection">
-        <Navbar/>
+        <Navbar onHowItWorksClick={() => setShowPopup(true)} />
+        <HowItWorksPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
       <div className="About-Image">
         {/* <img src={AboutBackground} alt="" /> */}
         {/* <h1 className="about-title">About</h1> */}
@@ -211,31 +222,31 @@ const AboutUs = () => {
       </section>
 
 
-      <section className="SoldPart">
-        <div className="Sold-Left">
-          <div className="solds-container">
-            <div className="sold">
-              <span>Video Editing</span>
+      <section className="bawah">
+        <div className="bawah-kiri">
+            <div className="bar">
+              <span>Originality</span>
               <div className="progress-bar">
-                <div className="progress-fill" style={{ width: "85%" }}></div>
+                <div className="progress-fill" style={{ width: widthBars ? "100%" : "0%" }}></div>
               </div>
             </div>
-            <div className="sold">
-              <span>Videography</span>
+            
+            <div className="bar">
+              <span>Unique Collections</span>
               <div className="progress-bar">
-                <div className="progress-fill" style={{ width: "90%" }}></div>
+                <div className="progress-fill" style={{ width: widthBars ? "92%" : "0%" }}></div>
               </div>
             </div>
-            <div className="sold">
-              <span>Branding</span>
+
+            <div className="bar">
+              <span>Quality</span>
               <div className="progress-bar">
-                <div className="progress-fill" style={{ width: "77%" }}></div>
+                <div className="progress-fill" style={{ width: widthBars ? "99%" : "0%" }}></div>
               </div>
             </div>
-          </div>
         </div>
-        <div className="Sold-Right">
-          <div className="sate">
+
+        <div className="bawah-kanan">
             <div className="sate-kiri">
               <div><strong>5+</strong><p>Year Of Experience</p></div>
               <div><strong>1,000+</strong><p>Items Sold</p></div>
@@ -243,49 +254,9 @@ const AboutUs = () => {
             <div className="sate-kanan">
               <div><strong>800+</strong><p>Satisfied Client</p></div>
               <div><strong>64</strong><p>Certified Award</p></div>
-            </div>
-            </div>
+          </div>
         </div>
       </section>
-
-      {/* <section className="CallToAction">
-        <div className="cta-overlay">
-          <h3>Hire Us Now</h3>
-          <h2>We Are Always Ready To Take A Perfect Shot</h2>
-          <button>Get Started</button>
-        </div>
-      </section> */}
-
-      {/* <footer className="Footer">
-        <div className="footer-columns">
-          <div className="footer-logo">
-            <img src={logo} alt="Logo" />
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-          <div className="footer-links">
-            <h4>Our Store</h4>
-            <ul>
-              <li>Home</li>
-              <li>About</li>
-              <li>Service</li>
-              <li>Contact</li>
-            </ul>
-          </div>
-          <div className="footer-contact">
-            <h4>Get In Touch</h4>
-            <p>2443 Oak Ridge Omaha, OA 45065</p>
-            <p>207-8967-452</p>
-            <p>092-245-7232</p>
-            <p>support@site.com</p>
-          </div>
-        </div>
-        <p className="copyright">
-          Copyright © 2023 LXRe | Powered by LXRe
-        </p>
-      </footer> */}
-
-
-
       <section className="Questioner">
         <h2 className="section-title">Frequently Asked Questions</h2>
         <div className="faq-container">

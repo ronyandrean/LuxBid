@@ -78,8 +78,8 @@ const App = () => {
           <Route path="/collection" element={<Collection />} />
           <Route path="/product/:productId" element={<ProductPageWrapper />} />
           <Route path="/profile" element={<Profile />} />
-          {/* <Route path="/history-bidding" element={<History />} />
-          <Route path="/history-selling" element={<HistorySelling />} /> */}
+          <Route path="/history-bidding" element={<History />} />
+          <Route path="/history-selling" element={<HistorySelling />} />
           <Route
             path="/selling-contact"
             element={
