@@ -134,10 +134,15 @@ const LandingPage: React.FC = () => {
               </p>
             </div>
             <div className="tagline-buttons">
-              <button className="button-1">
+              <button
+                className="button-1"
+                onClick={() => navigate('/collection')}
+              >
                 Explore <span className="arrow">›</span>
               </button>
-              <button className="button-2">Learn More</button>
+              <button className="button-2" onClick={() => navigate('/about')}>
+                Learn More
+              </button>
             </div>
           </div>
           <div className="stats-section">
@@ -323,7 +328,7 @@ const LandingPage: React.FC = () => {
             </p>
             <p>transparency of blockchain-based bidding.</p>
           </div>
-          <button className="Content-4-btn">Get Started Now</button>
+          <button className="Content-4-btn" onClick={() => navigate('/selling-contact')}>Get Started Now</button>
         </section>
         <AboutFooter />
       </div>
