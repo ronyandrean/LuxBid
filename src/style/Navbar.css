@@ -131,7 +131,7 @@
   font-weight: 100;
   font-size: 1rem;
   margin-top: 1rem;
-  padding: 0 12rem;
+  padding: 0 9rem;
 }
 
 .circle-container {
@@ -266,9 +266,10 @@
 .content {
   max-width: 90vw;
 }
+
 @media (min-width: 1024px) {
   .content {
-    max-width: 900px;
+    max-width: 1200px;
   }
 }
 
