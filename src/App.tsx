@@ -6,10 +6,6 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import LandingPage from './pages/LandingPage';
 import AboutUsPage from './pages/AboutUs';
-import CollectionLuxury from './pages/CollectionLuxury';
-import CollectionWatchesPage from './pages/CollectionWatches';
-import CollectionJewerlyPage from './pages/CollectionJewerly';
-// import CollectionFashionPage from './pages/CollectionFashion';
 import Collection from './pages/Collection';
 import Profile from './pages/Profiles';
 import ProductPage from './pages/ProductPage_Revisi';
@@ -78,8 +74,8 @@ const App = () => {
           <Route path="/collection" element={<Collection />} />
           <Route path="/product/:productId" element={<ProductPageWrapper />} />
           <Route path="/profile" element={<Profile />} />
-          {/* <Route path="/history-bidding" element={<History />} />
-          <Route path="/history-selling" element={<HistorySelling />} /> */}
+          <Route path="/history-bidding" element={<History />} />
+          <Route path="/history-selling" element={<HistorySelling />} />
           <Route
             path="/selling-contact"
             element={
