@@ -1,35 +1,40 @@
-# Luxbid — Decentralized Auction Platform
+# 🌟 LuxBid - Decentralized Auction Platform with AI & NFTs
 
-**Luxbid** is a decentralized auction platform for luxury goods, built on the **Internet Computer (ICP)** using **Motoko** for the backend and **React (TypeScript)** for the frontend. With Luxbid, users can list, browse, and bid on exclusive items in a secure and transparent environment—without relying on traditional intermediaries.
+**LuxBid** is a decentralized, Web3-powered auction platform built on the Internet Computer using Motoko and React. It revolutionizes the traditional bidding experience by combining **AI-driven fraud detection**, **NFT-based ownership proofs**, and a **trustless auction system** on-chain.
 
-It aims to revolutionize how people trade high-value items online by ensuring full ownership, verified identity, and immutability via blockchain smart contracts.
+## 🔍 What is LuxBid?
+
+LuxBid is an innovative bidding website where users can participate in auctions transparently and securely. The platform ensures fair play using artificial intelligence and rewards auction winners with verifiable NFT collections.
+
+### ✨ Key Features
+
+- **🤖 AI Fraud Detection**: Detects and prevents fraudulent bidding patterns in real-time using advanced AI models.
+- **🏆 NFT Ownership**: Each winning bid is rewarded with a unique NFT that proves ownership and authenticity of the product.
+- **🧠 Internet Identity Login**: Secure login powered by Internet Computer's Internet Identity.
+- **📦 On-Chain Auctions**: All auction logic runs on a smart contract using Motoko, ensuring transparency and decentralization.
+- **🎨 Modern UI**: Built with React + Tailwind for a clean and responsive user experience.
+
+---
+
+## 🚀 How It Works
+
+1. **Login**: Users sign in securely using Internet Identity.
+2. **Explore Auctions**: Browse available products up for bidding.
+3. **Place Bids**: Submit your bid in real-time with transparency.
+4. **AI Analysis**: The AI model monitors bidding behavior to detect abnormal or malicious activity.
+5. **Win and Claim NFT**: If you win, you’ll receive a unique NFT representing ownership of the item.
+6. **Track and View History**: See your bid history and owned NFTs.
 
 ---
 
-## 🔧 Tech Stack
+## 🛠 Tech Stack
 
-- **Frontend:** React.js + TypeScript + Vite
-- **Backend:** Motoko (on the Internet Computer)
-- **Canister Deployment:** DFX
-- **Smart Contract Storage:** Persistent and immutable data on the IC
-- **Image Upload:** Base64 image conversion handled on frontend
-
----
-
-## 🚀 Features
-
-- 🔐 **Decentralized Seller Account** creation
-- 📸 **Secure Image Upload** with validation
-- 🛍️ **Create Auctions** with:
-  - Product name
-  - Description
-  - Starting price & fixed price
-  - Auction duration (1 hour, 1 day, 7 days)
-- 📦 **Store & Retrieve Auction Items** from Motoko backend
-- 📄 **Smart contract** logic for product listing
-- 🔄 **Live data rendering** on product page
-
----
+- **Frontend**: React (Vite) + Tailwind CSS
+- **Backend**: Motoko (DFINITY Canisters)
+- **AI Service**: Python-based fraud detection (hosted separately or integrated)
+- **Blockchain**: Internet Computer Protocol (ICP)
+- **Authentication**: Internet Identity
+- **NFT Minting**: Canister-based NFT generation
 
 ## 🧪 How to Run Locally
 
