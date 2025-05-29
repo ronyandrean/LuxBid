@@ -11,7 +11,7 @@ const network = process.env.DFX_NETWORK;
 const identityProvider =
   network === 'ic'
     ? 'https://identity.ic0.app'
-    : 'http://rdmx6-jaaaa-aaaaa-aaadq-cai.localhost:4943';
+    : 'http://localhost:4943?canisterId=rdmx6-jaaaa-aaaaa-aaadq-cai';
 
 const Register = () => {
   const [authClient, setAuthClient] = useState<any>(null);

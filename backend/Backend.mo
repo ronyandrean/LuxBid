@@ -7,6 +7,7 @@ import Iter "mo:base/Iter";
 import Principal "mo:base/Principal";
 import Debug "mo:base/Debug";
 import Option "mo:base/Option";
+import TrieMap "mo:base/TrieMap";
 
 actor {
   // Type definitions
@@ -35,6 +36,34 @@ actor {
     lastName : Text;
     email : Text;
     phone : Text;
+  };
+
+  type User = {
+    id : Principal;
+    email : Text;
+    name : Text;
+    username : Text;
+    timestamp : Time.Time;
+    profileUrl : Text;
+  };
+
+  let users = TrieMap.TrieMap<Principal, User>(Principal.equal, Principal.hash);
+
+  public func register(userId : Principal, email : Text, name : Text, username : Text, profileUrl : Text) : async Bool {
+    if (users.get(userId) != null) {
+      return false;
+    };
+
+    let user : User = {
+      id = userId;
+      email = email;
+      name = name;
+      username = username;
+      timestamp = Time.now();
+      profileUrl = profileUrl;
+    };
+    users.put(user.id, user);
+    return true;
   };
 
   // State variables
