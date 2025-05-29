@@ -59,4 +59,10 @@ npm start
 ## 🙌 Credits
 Made with 💙 using the Internet Computer and React.
 
+## Teams
+- Rony Andrean
+- Nathanael Wilson Angelo
+- Austin Oswald
+- Juan Adriviano
+- Vanessa Maurencia Karyanto
 
