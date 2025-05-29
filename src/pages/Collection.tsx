@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import { useNavigate } from 'react-router-dom';
+import AboutFooter from './Footer';
 
 const backend = createActor(canisterId);
 // const navigate = useNavigate();
@@ -215,6 +216,7 @@ const Collection = () => {
             <BidCard /> */}
         </div>
       </section>
+      <AboutFooter />
     </>
   );
 };
