@@ -161,10 +161,9 @@
   .Middle-Right img {
     width: 30vh;
   }
+
   .desc {
     font-size: 15px;
-  }
-  .desc {
     display: flex;
     flex-direction: column;
     gap: 1.5px;
@@ -236,9 +235,10 @@
 .section-title {
   display: flex;
   justify-content: center;
-  font-family: "Gloock", serif;
+  font-family: "Inter", serif;
   color: white;
   font-size: 2rem;
+  font-weight: 600;
 }
 
 .faq-container {
