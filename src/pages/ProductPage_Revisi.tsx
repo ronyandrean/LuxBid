@@ -43,6 +43,7 @@ import BidCard2 from './BidCard-2';
 import AboutFooter from './Footer';
 import { Principal } from '@dfinity/principal';
 import { createActor, canisterId } from '../declarations/backend';
+import { useNavigate } from 'react-router-dom';
 
 const backend = createActor(canisterId);
 
@@ -79,6 +80,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ productId, onBack }) => {
   const [bidAmount, setBidAmount] = useState<string>('');
   const [bidStatus, setBidStatus] = useState<string>('');
   const [bidding, setBidding] = useState<boolean>(false);
+  const navigate = useNavigate();
   // const [bidAmount, setBidAmount] = useState<number>(18.6);
   // const [isPlacingBid, setIsPlacingBid] = useState(false);
   // const [bidPlaced, setBidPlaced] = useState(false);
@@ -166,10 +168,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ productId, onBack }) => {
     return (
       <div className="checking-auction">
         <p>Auction not found</p>
-        <button
-          onClick={onBack}
-          className="btn btn--primary"
-        >
+        <button onClick={onBack} className="btn btn--primary">
           Back to Auctions
         </button>
       </div>
@@ -185,7 +184,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ productId, onBack }) => {
 
         <div className="breadcrumb">
           <div className="container-breadcrumb">
-            <a href="#">Home</a>
+            <a href="/">Home</a>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -199,7 +198,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ productId, onBack }) => {
                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
               />
             </svg>
-            <a href="#">Auctions</a>
+            <a href="/collection">Auctions</a>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -230,7 +229,8 @@ const ProductPage: React.FC<ProductPageProps> = ({ productId, onBack }) => {
                       e: React.SyntheticEvent<HTMLImageElement, Event>,
                     ) => {
                       e.currentTarget.onerror = null;
-                      e.currentTarget.src = 'https://via.placeholder.com/400x300?text=No+Image';
+                      e.currentTarget.src =
+                        'https://via.placeholder.com/400x300?text=No+Image';
                     }}
                   />
                 ) : (
@@ -241,23 +241,11 @@ const ProductPage: React.FC<ProductPageProps> = ({ productId, onBack }) => {
               </div>
 
               <div className="thumb-row">
-                <img
-                  src={product.image}
-                  alt={product.productName}
-                />
-                <img
-                  src={product.image}
-                  alt={product.productName}
-                />
-                <img
-                  src={product.image}
-                  alt={product.productName}
-                />
+                <img src={product.image} alt={product.productName} />
+                <img src={product.image} alt={product.productName} />
+                <img src={product.image} alt={product.productName} />
                 <div className="thumb-video">
-                  <img
-                    src={product.image}
-                    alt={product.productName}
-                  />
+                  <img src={product.image} alt={product.productName} />
                 </div>
               </div>
             </div>
@@ -317,7 +305,11 @@ const ProductPage: React.FC<ProductPageProps> = ({ productId, onBack }) => {
                     <Button
                       variant="outline"
                       className="btn btn--primary"
-                      onClick={() => setBidAmount((Number(product.highestBid) + 1).toString())}
+                      onClick={() =>
+                        setBidAmount(
+                          (Number(product.highestBid) + 1).toString(),
+                        )
+                      }
                       disabled={bidding}
                     >
                       Min
@@ -427,9 +419,12 @@ const ProductPage: React.FC<ProductPageProps> = ({ productId, onBack }) => {
                 <div className="seller-actions">
                   <Button className="btn btn--small btn--outline">
                     Contact
-                  </Button>
-                  <Button className="btn btn--small btn--outline">
-                    Profile
+                    <Button
+                      className="btn btn--small btn--outline"
+                      onClick={() => navigate('/profile')}
+                    >
+                      Profile
+                    </Button>
                   </Button>
                 </div>
               </div>
@@ -485,9 +480,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ productId, onBack }) => {
               <TabsContent value="description" className="tabs-content">
                 <h3 className="section-heading-details">Description</h3>
                 <div className="item-description">
-                  <p>
-                    {product.description}
-                  </p>
+                  <p>{product.description}</p>
                 </div>
               </TabsContent>
               <TabsContent value="history" className="tabs-content">

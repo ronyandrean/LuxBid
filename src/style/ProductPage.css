@@ -1,21 +1,3 @@
-*::-webkit-scrollbar {
-  display: none;               
-}
-
-html, body, #root {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-y: auto;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 .Product-Page-Wrapper {
     background-color: #000000;
 }

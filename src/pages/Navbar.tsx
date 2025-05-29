@@ -5,13 +5,19 @@ import background from '../assets/background-landing-baru.jpg';
 import logo from '../assets/LXRe.png';
 import { Button } from '@/components/ui/button';
 import LandingPage from './LandingPage';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import { useNavigate } from 'react-router-dom';
 
-interface NavbarProps {
-  onHowItWorksClick: () => void;
-}
+const Navbar = () => {
+  const navigate = useNavigate();
 
-const Navbar : React.FC<NavbarProps> = ({ onHowItWorksClick }) => {
-  
   return (
     <>
       <header className="header">
@@ -23,7 +29,7 @@ const Navbar : React.FC<NavbarProps> = ({ onHowItWorksClick }) => {
           </div>
           <ul className="nav-links">
             <li>
-              <Link className="nav-link" to="/collection/luxury">
+              <Link className="nav-link" to="/collection">
                 Collections
               </Link>
             </li>
@@ -33,13 +39,69 @@ const Navbar : React.FC<NavbarProps> = ({ onHowItWorksClick }) => {
               </Link>
             </li>
             <li>
-              <button onClick={onHowItWorksClick} className="nav-link-btn">
-                How it Works
-              </button>
+              <div className="nav-link">
+                <div className="dialog">
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button variant="ghost" className="nav-link-btn">
+                        How it Works
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="content">
+                      <DialogHeader>
+                        <DialogTitle className="title-text">
+                          <div className="brand-dialog">
+                            How <span>LX</span>Re Works
+                          </div>
+                          <p className="text">
+                            Our blockchain-based platform ensures transparency
+                            and security at every step of the auction process.
+                          </p>
+                        </DialogTitle>
+                        <DialogDescription className="text-lg mb-2">
+                          <div className="circle-container">
+                            <div className="circle-1">
+                              <div className="circle">
+                                <h1>1</h1>
+                              </div>
+                              <h1 className='circle-title'>Connect Wallet</h1>
+                              <p className='circle-text'>Link your cryptocurrency wallet to access the platform and participate in auctions.</p>
+                            </div>
+
+                            <div className="circle-1">
+                              <div className="circle">
+                                <h1>2</h1>
+                              </div>
+                              <h1 className='circle-title'>Browse Auction</h1>
+                              <p className='circle-text'>Explore curated luxury items verified for authenticity by our expert team.</p>
+                            </div>
+
+                            <div className="circle-1">
+                              <div className="circle">
+                                <h1>3</h1>
+                              </div>
+                              <h1 className='circle-title'>Place Secure Bids</h1>
+                              <p className='circle-text'>Participate in transparent auctions with real-time updates and AI fraud protection.</p>
+                            </div>
+
+                            <div className="circle-1">
+                              <div className="circle">
+                                <h1>4</h1>
+                              </div>
+                              <h1 className='circle-title'>Receive NFT Certificate</h1>
+                              <p className='circle-text'>Winners get an NFT ownership certificate along with their purchased item.</p>
+                            </div>
+                          </div>
+                        </DialogDescription>
+                      </DialogHeader>
+                    </DialogContent>
+                  </Dialog>
+                </div>
+              </div>
             </li>
             <li>
               <div className="button">
-                <Button className="btn btn--outline">
+                <Button className="btn btn--outline" onClick={() => navigate(`/login`)}>
                   Connect Wallet
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -57,8 +119,6 @@ const Navbar : React.FC<NavbarProps> = ({ onHowItWorksClick }) => {
           </ul>
         </nav>
       </header>
-
-
     </>
   );
 };

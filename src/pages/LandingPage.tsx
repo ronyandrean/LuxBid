@@ -12,10 +12,11 @@ import { CircleStop } from 'lucide-react';
 import AboutFooter from './Footer';
 import BidCard from './BidCard';
 import BidCard2 from './BidCard-2';
+import { useNavigate } from 'react-router-dom';
+import '../style/BidCard.css';
 
 import { Principal } from '@dfinity/principal';
-import { createActor, canisterId } from "../declarations/backend";
-import HowItWorksPopup from "../pages/PopupHowItWorks";
+import { createActor, canisterId } from '../declarations/backend';
 
 const backend = createActor(canisterId);
 // Define types for the component props
@@ -43,7 +44,8 @@ const LandingPage: React.FC = () => {
 
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [filter, setFilter] = useState<string>('active'); // active, completed, all
+  const [filter, setFilter] = useState<string>('active');
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchProducts();
@@ -90,15 +92,11 @@ const LandingPage: React.FC = () => {
     return `${minutes}m remaining`;
   };
 
-  const handleHowItWorksClick = () => setShowPopup(true);
-  const handleClosePopup = () => setShowPopup(false);
   return (
     <>
       <div className="Landing-Content">
         <section className="Landing-content-1">
-          <Navbar onHowItWorksClick={() => setShowPopup(true)} />
-          <HowItWorksPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
-
+          <Navbar />
           <div className="animation-text-content">
             <p className="tagline">
               {'Transparent auctions using smart contracts'
@@ -122,7 +120,7 @@ const LandingPage: React.FC = () => {
             </h1>
             <div className="text-polos-1">
               <p className="Text-Landing-1">
-                {'Experience the future of luxury auctions with our'
+                {'Experience the future of luxury auctions with our secure, transparent, and AI-powered platform. Every transaction is verified on the blockchain for ultimate peace of mind.'
                   .split(' ')
                   .map((word, i) => (
                     <span
@@ -133,43 +131,6 @@ const LandingPage: React.FC = () => {
                       {word}&nbsp;
                     </span>
                   ))}
-              </p>
-              <p className="Text-Landing-2">
-                {'secure, transparent, and AI-powered platform. Every'
-                  .split(' ')
-                  .map((word, i) => (
-                    <span
-                      key={i}
-                      className="blur-word"
-                      style={{ animationDelay: `${i * 0.2}s` }}
-                    >
-                      {word}&nbsp;
-                    </span>
-                  ))}
-              </p>
-              <p className="Text-Landing-3">
-                {'transaction is verified on the blockchain for ultimate'
-                  .split(' ')
-                  .map((word, i) => (
-                    <span
-                      key={i}
-                      className="blur-word"
-                      style={{ animationDelay: `${i * 0.2}s` }}
-                    >
-                      {word}&nbsp;
-                    </span>
-                  ))}
-              </p>
-              <p className="Text-Landing-4">
-                {'peace of mind.'.split(' ').map((word, i) => (
-                  <span
-                    key={i}
-                    className="blur-word"
-                    style={{ animationDelay: `${i * 0.2}s` }}
-                  >
-                    {word}&nbsp;
-                  </span>
-                ))}
               </p>
             </div>
             <div className="tagline-buttons">
@@ -231,13 +192,21 @@ const LandingPage: React.FC = () => {
 
             <div className="right-side">
               <div className="tab-wrapper">
-                {['All', 'Auction', 'Completed', 'Highest Bid'].map((tab) => (
+                {[
+                  { label: 'All', value: 'all' },
+                  { label: 'Auction', value: 'active' },
+                  { label: 'Completed', value: 'completed' },
+                  { label: 'Highest Bid', value: 'highest' },
+                ].map((tab) => (
                   <div
-                    key={tab}
-                    className={`tab ${activeTab === tab ? 'active' : ''}`}
-                    onClick={() => { setActiveTab(tab); setFilter(tab); }}
+                    key={tab.value}
+                    className={`tab ${filter === tab.value ? 'active' : ''}`}
+                    onClick={() => {
+                      setActiveTab(tab.label);
+                      setFilter(tab.value);
+                    }}
                   >
-                    {tab}
+                    {tab.label}
                   </div>
                 ))}
               </div>
@@ -253,12 +222,10 @@ const LandingPage: React.FC = () => {
                 <p>No auctions found.</p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {products.map((product) => (
-                  <div
-                    key={product.id}
-                    className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
-                  >
+                  <div key={product.id} className="BidCard">
+                    {/* Gambar Produk */}
                     {product.image && (
                       <div className="h-48 overflow-hidden">
                         <img
@@ -268,31 +235,70 @@ const LandingPage: React.FC = () => {
                         />
                       </div>
                     )}
-                    <div className="p-4">
-                      <h3 className="text-xl font-semibold mb-2">
-                        {product.productName}
-                      </h3>
-                      <p className="text-gray-600 mb-2 line-clamp-2">
-                        {product.description}
-                      </p>
-                      <div className="flex justify-between items-center mt-4">
+
+                    {/* Konten Card */}
+                    <div className="Content-Card-2">
+                      {/* Judul dan Tombol Live */}
+                      <div className="product-title">
+                        <div className="product-header">
+                          <div className="bid-text-1">
+                            <h3>{product.productName}</h3>
+                          </div>
+                          <div
+                            className={`button-bid-1 ${
+                              product.deadline > BigInt(Date.now() * 1000000)
+                                ? '#31996B'
+                                : '#993133'
+                            }`}
+                          >
+                            <button>
+                              {product.deadline > BigInt(Date.now() * 1000000)
+                                ? 'Live'
+                                : 'End'}
+                            </button>
+                          </div>
+                        </div>
+
+                        <div className="product-footer">
+                          <p>{product.description}</p>
+                        </div>
+                      </div>
+
+                      {/* Info Bidding */}
+                      <div className="bid-info">
                         <div>
-                          <p className="text-sm text-gray-500">Current bid</p>
-                          <p className="font-bold">
+                          <p className="label">Current Bid</p>
+                          <p className="value">
                             {product.highestBid.toString()} ICP
                           </p>
                         </div>
                         <div>
-                          <span
-                            className={`px-2 py-1 rounded-full text-xs ${
-                              product.deadline > BigInt(Date.now() * 1000000)
-                                ? 'bg-green-100 text-green-800'
-                                : 'bg-red-100 text-red-800'
-                            }`}
+                          <p className="label">Ends in</p>
+                          <p
+                            className="value"
+                            style={{
+                              color:
+                                product.deadline > BigInt(Date.now() * 1000000)
+                                  ? '#31996B'
+                                  : '#993133',
+                            }}
                           >
                             {formatTimeRemaining(product.deadline)}
-                          </span>
+                          </p>
                         </div>
+                      </div>
+
+                      {/* Footer: Jumlah Bid dan Tombol */}
+                      <div className="footer-info">
+                        <p className="bids-count">
+                          {product.history.length} bids
+                        </p>
+                        <button
+                          className="place-bid-btn"
+                          onClick={() => navigate(`/product/${product.id}`)}
+                        >
+                          Place Bid
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -323,6 +329,6 @@ const LandingPage: React.FC = () => {
       </div>
     </>
   );
-}
+};
 
 export default LandingPage;

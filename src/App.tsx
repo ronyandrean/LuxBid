@@ -9,7 +9,8 @@ import AboutUsPage from './pages/AboutUs';
 import CollectionLuxury from './pages/CollectionLuxury';
 import CollectionWatchesPage from './pages/CollectionWatches';
 import CollectionJewerlyPage from './pages/CollectionJewerly';
-import CollectionFashionPage from './pages/CollectionFashion';
+// import CollectionFashionPage from './pages/CollectionFashion';
+import Collection from './pages/Collection';
 import Profile from './pages/Profiles';
 import ProductPage from './pages/ProductPage_Revisi';
 import History from './pages/History';
@@ -23,7 +24,7 @@ import {
   Route,
   createBrowserRouter,
 } from 'react-router-dom';
-import AboutUs from './pages/AboutUs';
+
 import { AuthClient } from '@dfinity/auth-client';
 import { createActor } from './declarations/backend';
 import { canisterId } from './declarations/backend/index.js';
@@ -71,14 +72,10 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/account" element={<Register />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/collection/luxury" element={<CollectionLuxury />} />
-          <Route path="/collection/Watches" element={<CollectionWatchesPage />} />
-          <Route path="/collection/jewelry" element={<CollectionJewerlyPage />} />
-
-          <Route path="/collection/fashion" element={<CollectionFashionPage />} /> */}
+          <Route path="/about" element={<AboutUsPage />} />
+          <Route path="/collection" element={<Collection />} />
           <Route path="/product/:productId" element={<ProductPageWrapper />} />
           <Route path="/profile" element={<Profile />} />
           {/* <Route path="/history-bidding" element={<History />} />
@@ -101,13 +98,6 @@ const App = () => {
               />
             }
           />
-          <Route path="/collection/fashion" element={<CollectionFashionPage />} />
-          <Route path="/product" element={<ProductPage />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/history-bidding" element={<History />} />
-          <Route path="/history-selling" element={<HistorySelling />} />
-          <Route path="/selling-contact" element={<SellingContact />} />
-          <Route path="/selling-item" element={<SellingItem />} />
           <Route path="/testing" element={<TestingBackend />} />
         </Routes>
       </BrowserRouter>

@@ -49,6 +49,10 @@
   list-style: none;
 }
 
+.nav-links:hover {
+  color: var(--emerald-400)
+}
+
 
 .nav-link {
   color: rgba(255, 255, 255, .8);
@@ -56,13 +60,26 @@
 }
 
 .nav-link-btn {
+  font-family: public-sans, sans-serif;
+  font-weight: 600;
   border: none;
-  background:none;
+  background: none;
   color: rgba(255, 255, 255, .8);
-  font-size: 14px;
-  font-family: "Quicksand", sans-serif;
   cursor: pointer;
+  list-style: none;
+  font-size: 1rem;
 }
+
+.nav-link-btn:hover {
+  font: public-sans, sans-serif;
+  font-weight: 600;
+  border: none;
+  background: none;
+  color: white;
+  cursor: pointer;
+  list-style: none;
+}
+
 
 .nav-wallet {
   font-weight: bold;
@@ -80,9 +97,94 @@
   transition: opacity 0.2s ease;
 }
 
+.content {
+  max-width: 1420px;
+  min-height: 600px;
+  border: 0;
+  background-color: #05080D;
+  color: white;
+  margin: 0 auto;
+}
 
-.nav-links:hover {
-  color: var(--emerald-400)
+.brand-dialog {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  margin-top: 3rem;
+}
+
+.brand-dialog span {
+  color: var(--emerald-400);
+}
+
+.title-text {
+  font-family: public-sans, sans-serif;
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 2rem;
+}
+
+.text {
+  font-family: "PT Serif", serif;
+  font-weight: 100;
+  font-size: 1rem;
+  margin-top: 1rem;
+  padding: 0 12rem;
+}
+
+.circle-container {
+  display: flex;
+  flex-direction: row;
+  padding: 0 2rem;
+  margin-top: 5rem;
+}
+
+.circle-1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem;
+}
+
+.circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 2rem;
+  font-family: "Public Sans", sans-serif;
+  border-radius: 100%;
+  width: 74px;
+  height: 74px;
+  background: rgba(0, 175, 131, 0.3);
+}
+
+.circle h1{
+  font-family: "Public Sans", sans-serif;
+  font-weight: 600;
+  color: white;
+  color: #00AF83;
+}
+
+.circle-title{
+  font-family: public-sans, sans-serif;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  margin-top: 0.8rem;
+}
+
+.circle-text {
+  font-family: "PT Serif", serif;
+  font-weight: 200;
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 0.5rem;
 }
 
 .btn {

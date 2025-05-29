@@ -14,7 +14,7 @@ const BidCard = () => {
       <div className="Content-Card-2">
         <div className="product-title">
           <div className="product-header">
-            <div className="bid-text-1">
+            <div className="product-header">
               <h3>Jordan 1 Low Travis</h3>
               <h3>Scott x Fragment</h3>
             </div>
@@ -23,7 +23,7 @@ const BidCard = () => {
             </div>
           </div>
 
-          <div className="product-footer">
+          <div className="product-headerproduct-header">
             <p>Limited edition timepiece with exquisite craftsmanship</p>
           </div>
         </div>
